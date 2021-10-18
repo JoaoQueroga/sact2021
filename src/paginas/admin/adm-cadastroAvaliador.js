@@ -1,14 +1,49 @@
 import './adm.css'
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
 import {Link, useHistory} from 'react-router-dom';
+import api from '../../configs/api';
 
 function AdmCadastroAvaliador(){
     const history = useHistory();
 
+    const [chave, setChave] = useState(11111);
+    const [nome, setNome] = useState('');
+    const [instituicao, setInst] = useState('');
+
     function cadastraAvaliador(){
-        history.push('/adm-avaliadores');
+        if(nome && instituicao){
+            api.post('avaliador/atualizaChave',{
+                "novaChave": parseInt(chave)
+            }).then(()=>{
+            api.post('avaliador/cadastra-avaliador', {
+                    "chave": chave,
+                    "nome": nome,
+                    "instituicao": instituicao
+            }).then(()=>{
+                    Swal.fire({
+                        title: 'Avaliador cadastrado',
+                        icon: 'success',
+                        confirmButtonText: 'ok',
+                    }).then((result) => {
+                        history.push('/adm-avaliadores');
+                    })
+            })
+            })
+        }else{
+            Swal.fire({
+                title: 'Preencha todos os campos',
+                icon: 'warning',
+                confirmButtonText: 'ok',
+            })
+        }
     }
+
+    useEffect(()=>{
+        api.get('avaliador/pegaChave').then((res)=>{
+           setChave(res.data.chave);
+        })
+    },[])
 
     return(
         <div className="admAvaliadores">
@@ -19,12 +54,12 @@ function AdmCadastroAvaliador(){
             <div className="admAvaliadoresMain">
                 <div className="formulario">
                     <label>nome</label>
-                    <input></input>
+                    <input value={nome} onChange={(e)=>setNome(e.target.value)}></input>
                     <label>instituição</label>
-                    <input></input>
+                    <input value={instituicao} onChange={(e)=>setInst(e.target.value)}></input>
                     <label>chave</label>
                     <div>
-                        <h1>1001</h1>
+                        <h1>{chave}</h1>
                     </div>
                 </div>
             </div>

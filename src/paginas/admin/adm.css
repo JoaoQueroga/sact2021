@@ -145,7 +145,8 @@
 }
 
 .admCardAvaliador{
-    border: 2px solid #73cef5;
+    background-color: #73cef5;
+    border-radius: 5px;
     width: 80%;
     margin-top: 6px;
     display: grid;
@@ -155,7 +156,7 @@
 
 .botoesAvaliador{
     grid-row: span 2;
-    border-left: 2px solid #73cef5;
+    border-left: 1px solid white;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
@@ -175,10 +176,10 @@
     text-align: left;
 }
 .statusAvaliador{
-    border-left: 2px solid #73cef5;
+    border-left: 1px solid white;
 }
 .nomeAvaliador{
-    border-bottom: 2px solid #73cef5;
+    border-bottom: 1px solid white;
     text-align: left;
 }
 
@@ -188,8 +189,8 @@
 }
 
 .idAvaliador{
-    border-bottom: 2px solid #73cef5;
-    border-left: 2px solid #73cef5;
+    border-bottom: 1px solid white;;
+    border-left: 1px solid white;;
 }
 
 
