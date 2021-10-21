@@ -1,0 +1,111 @@
+.admAvaliadores{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+/*LAYOT*/
+
+.topo-avaliadores{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: #faf9dc;
+    box-shadow: 0px 5px 10px #faf9dc;
+}
+
+.menuAvaliador a{
+    display: inline-block;
+    background-color: #4222DB;
+    width: 200px;
+    color: #faf9dc;
+    text-decoration: none;
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+    font-size: 20px;
+    margin: 0px 5px 0px 5px;
+}
+.menuAvaliador a:hover{
+    background-color: #341bb3;
+}
+.btCancelar{
+    background-color: rgb(148, 36, 36) !important;
+}
+.btCancelar:hover{
+    background-color: rgb(92, 24, 24) !important;
+}
+
+.admAvaliadoresMain{
+    margin-top: 20vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10vh;
+}
+
+
+
+
+/*CARD*/
+
+.admCardAvaliador{
+    background-color: #73cef5;
+    border-radius: 5px;
+    width: 80%;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 70% 20% 10%;
+    grid-template-rows: auto auto;
+}
+
+
+.botoesAvaliador{
+    grid-row: span 2;
+    border-left: 1px solid white;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+}
+
+.botoesAvaliador button{
+    background-color:  #4222DB;
+    color:  #faf9dc;
+    border: none;
+    margin: 5px;
+    border-radius: 5px;
+}
+.botoesAvaliador button:hover{
+    background-color:   #341bb3;
+}
+.instAvaliador{
+    text-align: left;
+    font-size: 22px;
+}
+.statusAvaliador{
+    border-left: 1px solid white;
+    font-size: 22px;
+}
+.nomeAvaliador{
+    border-bottom: 1px solid white;
+    text-align: left;
+    font-weight: bold;
+}
+
+.admCardAvaliador p{
+    margin: 0px;
+    padding: 5px;
+}
+
+.idAvaliador{
+    border-bottom: 1px solid white;;
+    border-left: 1px solid white;;
+    font-weight: bold;
+}

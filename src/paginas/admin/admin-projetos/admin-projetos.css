@@ -1,0 +1,192 @@
+.adminCursos .adminCursosP{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.adminCursosP{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.topo-adminCursos{
+    width: 100%;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: #faf9dc;
+    box-shadow: 0px 5px 10px #faf9dc;
+}
+
+.topo-adminCursosP{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.topo-adminCursos h2{
+    margin-bottom: 0px;
+}
+
+.topo-adminCursos div{
+    margin-top: 10px;
+    width: 60%;
+}
+
+.topo-adminCursos  a{
+    text-decoration: none;
+    background-color: #4222DB;
+    color: #faf9dc;
+    padding: 5px;
+    display: inline-block;
+    width: 20%;
+    margin: 0px 5px 0px 5px;
+    font-size: 20px;
+    border-radius: 5px;
+}
+.topo-adminCursos a:hover{
+    background-color: #341bb3;
+}
+
+.btCancelarProjeto{
+    background-color: rgb(148, 36, 36) !important;
+}
+.btCancelarProjeto:hover{
+    background-color: rgb(92, 24, 24) !important;
+}
+
+.main-adminCursos{
+    margin-top: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10vh;
+}
+
+.main-adminCursosP{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 75vh;
+}
+
+.rodape-adminCursos{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.main-adminCursosP span{
+    background-color: #faf9dc;
+    color: #4222DB;
+    border-radius: 5px;
+}
+
+.main-adminCursos a{
+    display: grid;
+    grid-template-columns: 75% 25%;
+    margin-top: 10px;
+    width: 40%;
+    text-decoration: none;
+    background-color:  #4222DB;
+    color: #faf9dc;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.main-adminCursosP a{
+    display: grid;
+    grid-template-columns: 75% 25%;
+    margin-top: 10px;
+    width: 40%;
+    text-decoration: none;
+    background-color:  #4222DB;
+    color: #faf9dc;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.main-adminCursos a:hover{
+    background-color:  #341bb3;
+}
+
+.main-adminCursosP a:hover{
+    background-color:  #341bb3;
+}
+
+.cardProjeto{
+    background-color: #73cef5;
+    border-radius: 5px;
+    width: 80%;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 5% 25% 60% 10%;
+    grid-template-rows: auto auto;
+}
+
+.nomeProjeto{
+    grid-column: span 4;
+    border-bottom: 1px solid #faf9dc;
+}
+
+.nomeProjeto p{
+    margin: 0px;
+    font-weight: bold;
+}
+
+.turmaProjeto{
+    border-right: 1px solid #faf9dc;
+}
+
+.alunosProjeto{
+    border-right: 1px solid #faf9dc;
+}
+.alunosProjeto p{
+    margin: 0;
+    text-align: left;
+    padding: 0px 0px 0px 10px;
+    font-size: 20px;
+}
+
+.descricaoProjeto{
+    border-right: 1px solid #faf9dc;
+}
+.descricaoProjeto p{
+    margin: 0;
+    text-align: left;
+    padding: 4px;
+    font-size: 20px;
+}
+
+.botoesProjeto{
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+.botoesProjeto button{
+    background-color:  #4222DB;
+    color:  #faf9dc;
+    border: none;
+    margin: 8px;
+    border-radius: 5px;
+}
+.botoesProjeto button:hover{
+    background-color:  #341bb3;   
+}

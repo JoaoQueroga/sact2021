@@ -1,0 +1,140 @@
+.projetoCadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.projetoCadastroTopo{
+    width: 100%;
+    height: 20vh;
+}
+
+.projetoCadastroMain{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.projetoCadastroRodape{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formularioProjeto{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 80%;
+}
+
+.formularioProjeto input{
+    width: 100%;
+    padding: 8px;
+    font-size: 20px;
+}
+
+.nomeProjetoCadastro{
+    margin-top: 5px;
+    display: grid;
+    grid-template-columns: 90% 10%;
+    width: 100%;
+}
+.nomeProjetoCadastro div{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   width: 99%;
+}
+
+.selectTurma select{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+#opcoesAlunos{
+    margin-top: 10px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+
+}
+#opcoesAlunos .nameSpan{
+    padding: 0px 20px 0px 0px;
+}
+#opcoesAlunos .opSpan{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+}
+
+#opcoesAlunos input[type=checkbox]{
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+    transform: scale(2);
+    padding: 10px;
+}
+
+.descricaoProjetoCadastro{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.descricaoProjetoCadastro textarea{
+ width: 100%;
+ height: 10vh;
+}
+
+.alunosProjetoCadastro{
+    margin-top: 5px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.alunosProjetoCadastro input{
+    margin: 0px 0px 0px 5px ;
+}
+
+
+
+
+.btCancelar{
+    background-color: rgb(148, 36, 36) !important;
+}
+.btCancelar:hover{
+    background-color: rgb(92, 24, 24) !important;
+}
+.projetoCadastroRodape button{
+    background-color: #4222DB;
+    width: 200px;
+    color: #faf9dc;
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+    font-size: 20px;
+    margin: 0px 5px 0px 5px;
+}
+
+.projetoCadastroRodape button:hover{
+    background-color: #341bb3;
+}

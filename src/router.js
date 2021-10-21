@@ -17,8 +17,13 @@ import VisitanteAvaliacao from './paginas/visitante/visitante-avaliacao';
 //admin
 import AdmLogin from './paginas/admin/adm-login';
 import AdmInicio from './paginas/admin/adm-inicio';
-import AdmAvaliadores from './paginas/admin/admin-avaliadores';
-import CadastroAvaliador from './paginas/admin/adm-cadastroAvaliador';
+import AdmAvaliadores from './paginas/admin/admin-avaliadores/admin-avaliadores';
+import CadastroAvaliador from './paginas/admin/admin-avaliadores/adm-cadastroAvaliador';
+
+import AdminProjetoCursos from './paginas/admin/admin-projetos/admin-projetoCurso';
+import AdminProjetos from './paginas/admin/admin-projetos/admin-projetos';
+import ProjetoCadastro from './paginas/admin/admin-projetos/admin-projetoCadastro';
+
 
 function Rotas(){
     return(
@@ -68,6 +73,15 @@ function Rotas(){
                 </Route>
                 <Route exact path="/cadastro-avaliador">
                     <CadastroAvaliador/>
+                </Route>
+                <Route exact path="/admin-projetos-cursos">
+                    <AdminProjetoCursos/>
+                </Route>
+                <Route exact path="/admin-projetos">
+                    <AdminProjetos/>
+                </Route>
+                <Route exact path="/admin-projetoCadastro">
+                    <ProjetoCadastro/>
                 </Route>
             </Switch>
         </BrowserRouter>

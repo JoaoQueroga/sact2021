@@ -1,8 +1,7 @@
-import './adm.css'
 import {useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
-import {Link, useHistory} from 'react-router-dom';
-import api from '../../configs/api';
+import {useHistory} from 'react-router-dom';
+import api from '../../../configs/api';
 
 function AdmCadastroAvaliador(){
     const history = useHistory();
@@ -45,13 +44,18 @@ function AdmCadastroAvaliador(){
         })
     },[])
 
+
+    function cancelar(){
+        history.push('/adm-avaliadores');
+    }
+
     return(
-        <div className="admAvaliadores">
-            <div className="admAvaliadoresTopo">
-                <h2>Cadastrar avaliador</h2>
+        <div className="admCadastroAvaliadores">
+            <div className="admCadastroAvaliadoresTopo">
+                <h3>Cadastrar avaliador</h3>
                
             </div>
-            <div className="admAvaliadoresMain">
+            <div className="admCadastroAvaliadoresMain">
                 <div className="formulario">
                     <label>nome</label>
                     <input value={nome} onChange={(e)=>setNome(e.target.value)}></input>
@@ -63,9 +67,9 @@ function AdmCadastroAvaliador(){
                     </div>
                 </div>
             </div>
-            <div className="admRodape">
+            <div className="admCadastroRodape">
                 <button onClick={cadastraAvaliador}>cadastrar</button>
-                <Link to="/adm-avaliadores">voltar</Link>
+                <button onClick={cancelar} className="btCancelar">cancelar</button>
             </div>
 
         </div>

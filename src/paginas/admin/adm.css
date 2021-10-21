@@ -3,49 +3,25 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    width: 100%;
 }
 
 .topoAdm{
-    height: 15vh;
+    width: 100%;
+    height: 20vh;
 }
 
 .mainAdm{
-    height: 75vh;
-    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-}
-
-.rodapeAdm{
-    height: 10vh;
-}
-
-
-.rodapeAdm a{
-    text-decoration: none;
-}
-
-.topoAdm h1{
-    margin-bottom: 0px;
-}
-
-.topoAdm p{
-   margin-top: 0px;
-}
-
-.mainAdm h1{
-    font-size: 5em;
-    margin-bottom: 0px;
-}
-
-.mainAdm p{
-    margin-top: 0px;
+    width: 100%;
+    height: 70vh;
 }
 
 .mainAdm input{
-    width: 80%;
+    width: 20%;
     height: 8%;
     border: none;
     border-bottom: 2px solid #4222DB;
@@ -58,6 +34,7 @@
 .mainAdm input:focus{
     outline: none;
 }
+
 .mainAdm input::placeholder{
     color: rgba(10, 10, 10, 0.1);
     font-style: italic;
@@ -73,8 +50,8 @@
 .mainAdm button{
     margin-top: 40px;
     background-color:  #4222DB;
-    width: 80%;
-    height: 8%;
+    width: 200px;
+    padding: 10px;
     color:  #faf9dc;
     font-size: 20px;
     border: none;
@@ -84,151 +61,6 @@
     background-color:  #341bb3;
 }
 
-
-
-
-/*avaliadores*/
-.admAvaliadores{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-}
-
-.admAvaliadoresTopo{
-    width: 80%;
-    height: 20vh;
-}
-
-.admAvaliadoresTopo h2{
-    margin-bottom: 10px;
-}
-.admRodape button{
-    margin-top: 0px;
-    background-color:  #4222DB;
-    color:  #faf9dc;
-    font-size: 20px;
-    border: none;
-    border-radius: 5px;
-    padding: 5px;
-    width: 200px;
-}
-
-.admRodape button:hover{
-    background-color:  #341bb3;
-}
-
-.admAvaliadoresTopo a{
-    margin-top: 0px;
-    background-color:  #4222DB;
-    color:  #faf9dc;
-    font-size: 20px;
-    border-radius: 5px;
-    padding: 5px;
-    display: inline-block;
-    width: 200px;
-    text-decoration: none;
-}
-
-.admAvaliadoresTopo a:hover{
-    background-color:  #341bb3;
-}
-
-
-.admAvaliadoresMain{
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-}
-
-.admCardAvaliador{
-    background-color: #73cef5;
-    border-radius: 5px;
-    width: 80%;
-    margin-top: 6px;
-    display: grid;
-    grid-template-columns: 70% 20% 10%;
-    grid-template-rows: auto auto;
-}
-
-.botoesAvaliador{
-    grid-row: span 2;
-    border-left: 1px solid white;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto;
-}
-
-.botoesAvaliador button{
-    background-color:  #4222DB;
-    color:  #faf9dc;
-    border: none;
-    margin: 5px;
-    border-radius: 5px;
-}
-.botoesAvaliador button:hover{
-    background-color:   #341bb3;
-}
-.instAvaliador{
-    text-align: left;
-}
-.statusAvaliador{
-    border-left: 1px solid white;
-}
-.nomeAvaliador{
-    border-bottom: 1px solid white;
-    text-align: left;
-}
-
-.admCardAvaliador p{
-    margin: 0px;
-    padding: 5px;
-}
-
-.idAvaliador{
-    border-bottom: 1px solid white;;
-    border-left: 1px solid white;;
-}
-
-
-.admRodape{
-    margin-top: 20px;
-    height: 10vh;
-    width: 80%;
-}
-.admRodape a{
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    margin-top: 20px;
-}
-
-.formulario{
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-
-    width: 40%;
-}
-
-.formulario input{
-    width: 100%;
-    padding: 8px;
-    font-size: 20px;
-}
-
-.formulario div{
-       display: flex;
-       align-items: center;
-       justify-content: center;
-       width: 100%;
-       padding: 8px;
-       border: 1px solid #73cef5;
-       border-radius: 8px;
+.rodapeAdm a{
+text-decoration: none;
 }

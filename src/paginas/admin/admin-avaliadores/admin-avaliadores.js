@@ -1,8 +1,9 @@
-import './adm.css'
+import './avaliadores.css'
 import {Link} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
-import api from '../../configs/api'
+import api from '../../../configs/api'
+import './avaliadoresCadastro.css';
 
 function AdmAvaliadores(){
     const [avaliadores, setAvaliadores] = useState([]);
@@ -51,9 +52,12 @@ function AdmAvaliadores(){
 
     return(
         <div className="admAvaliadores">
-            <div className="admAvaliadoresTopo">
-                <h2>Avaliadores</h2>
-                <Link to="/cadastro-avaliador">cadastrar</Link>
+            <div className="topo-avaliadores">
+                <h3>Avaliadores</h3>
+                <div className="menuAvaliador">
+                    <Link to="/cadastro-avaliador">cadastrar</Link>
+                    <Link className="btCancelar" to="/adm-inicio">voltar</Link>
+                </div>
             </div>
             
             <div className="admAvaliadoresMain">
@@ -85,9 +89,7 @@ function AdmAvaliadores(){
                 
                 }
             </div>
-            <div className="admRodape">
-                <Link to="/adm-inicio">voltar</Link>
-            </div>
+          
 
         </div>
     )
