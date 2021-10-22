@@ -24,7 +24,10 @@ import AdminProjetoCursos from './paginas/admin/admin-projetos/admin-projetoCurs
 import AdminProjetos from './paginas/admin/admin-projetos/admin-projetos';
 import ProjetoCadastro from './paginas/admin/admin-projetos/admin-projetoCadastro';
 
+import AdmProfessores from './paginas/admin/admin-professores/adm-professores';
+import AdmCadastroProfessor from './paginas/admin/admin-professores/admin-professorCadastro';
 
+import AdmCriterios from './paginas/admin/admin-criterios/adm-criterios';
 function Rotas(){
     return(
         <BrowserRouter>
@@ -82,6 +85,15 @@ function Rotas(){
                 </Route>
                 <Route exact path="/admin-projetoCadastro">
                     <ProjetoCadastro/>
+                </Route>
+                <Route exact path="/admin-professores">
+                    <AdmProfessores/>
+                </Route>
+                <Route exact path="/cadastro-professor">
+                    <AdmCadastroProfessor/>
+                </Route>
+                <Route exact path="/admin-criterios">
+                    <AdmCriterios/>
                 </Route>
             </Switch>
         </BrowserRouter>

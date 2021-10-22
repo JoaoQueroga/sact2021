@@ -40,8 +40,8 @@ function AdmInicio(){
             <div className="admInicioOpcoes">
                 <Link to="/adm-avaliadores">avaliadores</Link>
                 <Link to="/admin-projetos-cursos">projetos</Link>
-                <Link to="#">professores</Link>
-                <Link to="#">critérios</Link>
+                <Link to="/admin-professores">professores</Link>
+                <Link to="/admin-criterios">critérios</Link>
                 <Link to="#">relatórios</Link>
                 <Link to="#">dados</Link>
             </div>
