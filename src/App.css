@@ -3,6 +3,7 @@
 }
 
 .App {
+  width: 100%;
   background-color: #faf9dc;
   min-height: 100vh;
   display: flex;

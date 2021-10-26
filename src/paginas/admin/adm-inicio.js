@@ -18,7 +18,7 @@ function AdmInicio(){
     }, [])
 
     return(
-        <div className="admInicio">
+        <div className="admInicioDash">
             <div className="admInicioTopo">
                 <p>administração</p>
             </div>

@@ -1,0 +1,23 @@
+
+
+.naoAuth{
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(92, 24, 24);
+    color: wheat;  
+}
+.naoAuth a{
+    color: wheat;  
+    text-decoration: none;
+}
+.naoExiste{
+    width: 100%;
+    height: 100vh;
+    background-color: #73cef5; 
+    color: rgb(92, 24, 24);
+}
+
+.naoExiste a{
+ text-decoration: none;
+ color: rgb(92, 24, 24);
+}

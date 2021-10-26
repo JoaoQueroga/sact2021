@@ -1,7 +1,9 @@
 import './adm.css';
 import {Link, useHistory} from 'react-router-dom';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
+import api from '../../configs/api';
+import {login, logout} from '../../configs/auth';
 
 function AdmLogin(){
     const history = useHistory();
@@ -10,14 +12,35 @@ function AdmLogin(){
 
     function logirAdm(){
         if(chave){
-            Swal.fire({
-                title: 'admin online',
-                confirmButtonText: 'vamos nessa',
-            }).then((result)=>{
-                if (result.isConfirmed) {
-                    history.push('/adm-inicio')
+            api.post('/auth/admin-login', {
+                "chave":chave 
+            }).then((res)=>{
+                if(res.data){
+                    login(res.data); //faz o login na auth
+                    Swal.fire({
+                        title: 'admin online',
+                        icon: 'success',
+                        confirmButtonText: 'vamos nessa',
+                    }).then(()=>{
+                        history.push('/adm-inicio')
+                    })
+                }else{
+                    Swal.fire({
+                        title: 'Erro na autenticação',
+                        icon: 'error',
+                        confirmButtonText: 'ok',
+                    })
                 }
+               
+            }).catch((e)=>{
+                console.log(e);
+                Swal.fire({
+                    title: 'Erro na autenticação',
+                    icon: 'error',
+                    confirmButtonText: 'ok',
+                })
             })
+            
         }else{
             Swal.fire({
                 title: 'sem chave',
@@ -27,6 +50,10 @@ function AdmLogin(){
             })
         }
     }
+
+    useEffect(()=>{
+        logout(); // faz o logout
+    })
 
     return(
         <div className="admLogin">   

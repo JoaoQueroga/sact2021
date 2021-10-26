@@ -1,6 +1,12 @@
 CREATE SCHEMA `sact2021` ;
 USE sact2021;
 
+CREATE TABLE `sact2021`.`admin` (
+  `chave` VARCHAR(20) NOT NULL,
+  `nome` VARCHAR(45) NULL,
+  PRIMARY KEY (`chave`));
+
+
 CREATE TABLE `sact2021`.`chaves` (
   `id` INT NOT NULL,
   `chave_avaliador` VARCHAR(32) NULL,

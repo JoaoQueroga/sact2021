@@ -1,7 +1,13 @@
 import {Link} from 'react-router-dom';
 import './inicio.css';
+import {useEffect} from 'react';
+import {logout} from '../configs/auth';
 
 function Inicio(){
+
+    useEffect(()=>{
+        logout(); // faz o logout
+    })
 
     return(
         <div className="inicio">

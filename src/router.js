@@ -1,4 +1,5 @@
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch,Redirect} from 'react-router-dom';
+import {autenticado} from './configs/auth';
 
 //inicio
 import Inicio from './paginas/inicio';
@@ -30,6 +31,25 @@ import AdmCadastroProfessor from './paginas/admin/admin-professores/admin-profes
 import AdmCriterios from './paginas/admin/admin-criterios/adm-criterios';
 import CriteriosCurso from './paginas/admin/admin-criterios/adm-criterioTurma';
 import CriterioCadastro from './paginas/admin/admin-criterios/adm-criterioCadastro';
+
+import NaoAuth from './paginas/naoAuth';
+import NaoExiste from './paginas/naoEncontrada';
+
+//rotas protegidas
+const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route
+      {...rest}
+      render={props =>
+        autenticado() ? (
+            <Component  {...props} />
+        ) : (
+          <Redirect to={{ pathname: "/naoauth", state: { from: props.location } }} />
+        )
+      }
+    />
+);
+
+//rotas
 function Rotas(){
     return(
         <BrowserRouter>
@@ -70,38 +90,26 @@ function Rotas(){
                 <Route exact path="/adm-login">
                     <AdmLogin/>
                 </Route>
-                <Route exact path="/adm-inicio">
-                    <AdmInicio/>
+
+                <PrivateRoute exact path="/adm-inicio" component={ AdmInicio } />
+                <PrivateRoute exact path="/adm-avaliadores" component={ AdmAvaliadores } />
+                <PrivateRoute exact path="/cadastro-avaliador" component={ CadastroAvaliador } />
+                <PrivateRoute exact path="/admin-projetos" component={ AdminProjetoCursos } />
+                <PrivateRoute path="/admin-projetos/:curso" component={ AdminProjetos } />
+                <PrivateRoute path="/admin-projetoCadastro/:curso" component={ ProjetoCadastro } />
+                <PrivateRoute exact path="/admin-professores" component={ AdmProfessores } />
+                <PrivateRoute exact path="/cadastro-professor" component={ AdmCadastroProfessor } />
+                <PrivateRoute exact path="/admin-criterios" component={ AdmCriterios } />
+                <PrivateRoute exact path="/admin-criteriosCursos" component={ CriteriosCurso } />
+                <PrivateRoute exact path="/admin-criterioCadastro" component={ CriterioCadastro } />
+            
+
+                <Route exact path="/naoauth">
+                    <NaoAuth/>
                 </Route>
-                <Route exact path="/adm-avaliadores">
-                    <AdmAvaliadores/>
-                </Route>
-                <Route exact path="/cadastro-avaliador">
-                    <CadastroAvaliador/>
-                </Route>
-                <Route exact path="/admin-projetos">
-                    <AdminProjetoCursos/>
-                </Route>
-                <Route path="/admin-projetos/:curso">
-                    <AdminProjetos/>
-                </Route>
-                <Route exact path="/admin-projetoCadastro/:curso">
-                    <ProjetoCadastro/>
-                </Route>
-                <Route exact path="/admin-professores">
-                    <AdmProfessores/>
-                </Route>
-                <Route exact path="/cadastro-professor">
-                    <AdmCadastroProfessor/>
-                </Route>
-                <Route exact path="/admin-criterios">
-                    <AdmCriterios/>
-                </Route>
-                <Route exact path="/admin-criteriosCursos">
-                    <CriteriosCurso/>
-                </Route>
-                <Route exact path="/admin-criterioCadastro">
-                    <CriterioCadastro/>
+
+                <Route path="*">
+                    <NaoExiste/>
                 </Route>
             </Switch>
         </BrowserRouter>
