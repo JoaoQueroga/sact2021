@@ -59,7 +59,6 @@
     width: 100%;
     height: 100%;
     text-align: center;
-    font-weight: bold;
     font-size: 25px;
 }
 
@@ -73,21 +72,9 @@
 #opcoesAlunos .nameSpan{
     padding: 0px 20px 0px 0px;
 }
-#opcoesAlunos .opSpan{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 70px;
-}
 
-#opcoesAlunos input[type=checkbox]{
-    -ms-transform: scale(2); /* IE */
-    -moz-transform: scale(2); /* FF */
-    -webkit-transform: scale(2); /* Safari and Chrome */
-    -o-transform: scale(2); /* Opera */
-    transform: scale(2);
-    padding: 10px;
-}
+
+
 
 .descricaoProjetoCadastro{
     width: 100%;

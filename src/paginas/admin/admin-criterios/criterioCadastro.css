@@ -1,0 +1,86 @@
+.criterioadastro{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.criterioadastroTopo{
+    width: 100%;
+    height: 20vh;
+}
+
+.criterioadastroMain{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.criterioadastroRodape{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formularioCriterio{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 80%;
+}
+
+
+.descricaoCriterioCadastro{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.descricaoPesoCadastro{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.descricaoPesoCadastro div{
+    text-align: start;
+}
+
+.descricaoPesoCadastro input{
+    width: 90%;
+}
+
+.descricaoCriterioCadastro textarea{
+    width: 100%;
+    height: 10vh;
+}
+
+
+.btCancelar{
+    background-color: rgb(148, 36, 36) !important;
+}
+.btCancelar:hover{
+    background-color: rgb(92, 24, 24) !important;
+}
+.criterioadastroRodape button{
+    background-color: #4222DB;
+    width: 200px;
+    color: #faf9dc;
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+    font-size: 20px;
+    margin: 0px 5px 0px 5px;
+}
+
+.criterioadastroRodape button:hover{
+    background-color: #341bb3;
+}

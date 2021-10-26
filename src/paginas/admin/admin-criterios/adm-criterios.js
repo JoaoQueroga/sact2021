@@ -52,10 +52,10 @@ function AdmCriterios(){
     return(
         <div className="admCriterios">
             <div className="topoCriterios">
-                <h3>Critérios de avaliação</h3>
+                <h3>Critérios de informática</h3>
                 <div className="menuCriterios">
-                    <Link to="/cadastro-criterio">cadastrar</Link>
-                    <Link className="btCancelar" to="/adm-inicio">voltar</Link>
+                    <Link to="/admin-criterioCadastro">cadastrar</Link>
+                    <Link className="btCancelar" to="/admin-criteriosCursos">voltar</Link>
                 </div>
             </div>
             

@@ -6,10 +6,14 @@ import api from '../../configs/api';
 function AdmInicio(){
 
     const [qtdAvaliadores, setQtdAv] = useState(0);
+    const [qtdProjetos, setQtdProjs] = useState(0);
 
     useEffect(()=>{
         api.get('avaliador/cont').then((res)=>{
             setQtdAv(res.data[0].cont);
+        })
+        api.get('projetos/cont').then((res)=>{
+            setQtdProjs(res.data[0].cont);
         })
     }, [])
 
@@ -20,7 +24,7 @@ function AdmInicio(){
             </div>
             <div className="admInicioCards">
                 <div className="cardAdminInicio">
-                    <h1>10</h1>
+                    <h1>{qtdProjetos}</h1>
                     <p>projetos</p>
                 </div>
                 <div className="cardAdminInicio">
@@ -39,9 +43,9 @@ function AdmInicio(){
             </div>
             <div className="admInicioOpcoes">
                 <Link to="/adm-avaliadores">avaliadores</Link>
-                <Link to="/admin-projetos-cursos">projetos</Link>
+                <Link to="/admin-projetos">projetos</Link>
                 <Link to="/admin-professores">professores</Link>
-                <Link to="/admin-criterios">critérios</Link>
+                <Link to="/admin-criteriosCursos">critérios</Link>
                 <Link to="#">relatórios</Link>
                 <Link to="#">dados</Link>
             </div>

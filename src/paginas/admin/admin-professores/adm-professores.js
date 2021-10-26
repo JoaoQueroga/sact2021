@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import api from '../../../configs/api'
 
 function AdmProfessores(){
-    const [professores, setProfessores] = useState([1,1,1,1,1,1,1,1,1,1]);
+    const [professores, setProfessores] = useState([1,1]);
 
     useEffect(()=>{
         api.get('...').then((res)=>{

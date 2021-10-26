@@ -28,6 +28,8 @@ import AdmProfessores from './paginas/admin/admin-professores/adm-professores';
 import AdmCadastroProfessor from './paginas/admin/admin-professores/admin-professorCadastro';
 
 import AdmCriterios from './paginas/admin/admin-criterios/adm-criterios';
+import CriteriosCurso from './paginas/admin/admin-criterios/adm-criterioTurma';
+import CriterioCadastro from './paginas/admin/admin-criterios/adm-criterioCadastro';
 function Rotas(){
     return(
         <BrowserRouter>
@@ -77,13 +79,13 @@ function Rotas(){
                 <Route exact path="/cadastro-avaliador">
                     <CadastroAvaliador/>
                 </Route>
-                <Route exact path="/admin-projetos-cursos">
+                <Route exact path="/admin-projetos">
                     <AdminProjetoCursos/>
                 </Route>
-                <Route exact path="/admin-projetos">
+                <Route path="/admin-projetos/:curso">
                     <AdminProjetos/>
                 </Route>
-                <Route exact path="/admin-projetoCadastro">
+                <Route exact path="/admin-projetoCadastro/:curso">
                     <ProjetoCadastro/>
                 </Route>
                 <Route exact path="/admin-professores">
@@ -94,6 +96,12 @@ function Rotas(){
                 </Route>
                 <Route exact path="/admin-criterios">
                     <AdmCriterios/>
+                </Route>
+                <Route exact path="/admin-criteriosCursos">
+                    <CriteriosCurso/>
+                </Route>
+                <Route exact path="/admin-criterioCadastro">
+                    <CriterioCadastro/>
                 </Route>
             </Switch>
         </BrowserRouter>
