@@ -7,6 +7,7 @@ function AdmInicio(){
 
     const [qtdAvaliadores, setQtdAv] = useState(0);
     const [qtdProjetos, setQtdProjs] = useState(0);
+    const [qtdProfs, setQtdProfs] = useState(0);
 
     useEffect(()=>{
         api.get('avaliador/cont').then((res)=>{
@@ -14,6 +15,9 @@ function AdmInicio(){
         })
         api.get('projetos/cont').then((res)=>{
             setQtdProjs(res.data[0].cont);
+        })
+        api.get('professor/cont').then((res)=>{
+            setQtdProfs(res.data[0].cont);
         })
     }, [])
 
@@ -32,7 +36,7 @@ function AdmInicio(){
                     <p>avaliadores</p>
                 </div>
                 <div className="cardAdminInicio">
-                    <h1>3</h1>
+                    <h1>{qtdProfs}</h1>
                     <p>professores</p>
                 </div>
                 <div className="cardAdminInicio">

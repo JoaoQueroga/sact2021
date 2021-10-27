@@ -25,14 +25,12 @@ function AdminProjetoCursos(){
         <div className="adminCursosP">
             <div className="topo-adminCursosP">
                 <h2>Projetos - cursos</h2>
+                <Link to="/adm-inicio">voltar</Link>
             </div>
             <div className="main-adminCursosP">
                <Link to="/admin-projetos/info">Informática <span>{info}</span></Link>
                <Link to="/admin-projetos/eletro">Eletrônica <span>{eletro}</span></Link>
                <Link to="/admin-projetos/meca">Mecatrônica <span>{meca}</span></Link>
-            </div>
-            <div className="rodape-adminCursosP">
-                <Link to="/adm-inicio">sair</Link>
             </div>
         </div>
     )

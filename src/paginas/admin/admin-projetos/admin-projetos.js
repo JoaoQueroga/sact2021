@@ -10,6 +10,7 @@ function AdminProjetos(){
 
     const [projetos, setProjetos] = useState([]); 
     const [c, setC] = useState("");
+    const [filtro, setFiltro] = useState('-');
 
     useEffect(()=>{
         api.get(`projetos/todos/${curso}`).then((res)=>{
@@ -67,6 +68,30 @@ function AdminProjetos(){
             <div className="topo-adminCursos">
                 <h2>Projetos de {c}</h2>
                 <div className="menuProjeto">
+                    {//filtro dinamico
+                        curso==="info"?
+                        <select value={filtro} onChange={(e)=>{setFiltro(e.target.value)}}>
+                            <option value="-">todos</option>
+                            <option value="3AI">3AI</option>
+                            <option value="3BI">3BI</option>
+                            <option value="3CI">3CI</option>
+                        </select>
+                        :curso==="eletro"?
+                        <select value={filtro} onChange={(e)=>{setFiltro(e.target.value)}}>
+                            <option value="-">todos</option>
+                            <option value="3AE">3AE</option>
+                            <option value="3BE">3BE</option>
+                        </select>
+                        :curso==="meca"?
+                        <select value={filtro} onChange={(e)=>{setFiltro(e.target.value)}}>
+                            <option value="-">todos</option>
+                            <option value="3AM">3AM</option>
+                            <option value="3BM">3BM</option>
+                            <option value="3CM">3CM</option>
+                        </select>
+                        :
+                        <span></span>
+                    }
                     <Link to={`/admin-projetoCadastro/${curso}`}>cadastrar</Link>
                     <Link className="btCancelarProjeto" to="/admin-projetos">voltar</Link>
                 </div>
@@ -74,7 +99,9 @@ function AdminProjetos(){
             <div className="main-adminCursos">
                 {
                     projetos.map((p)=>{
+                        console.log(p.filtro);
                         return(
+                            p.turma === filtro || filtro === "-" ? //filtro
                         <div className="cardProjeto" key={p.chave}>
                             <div className="nomeProjeto">
                                     <p>{p.nome}</p>
@@ -101,6 +128,8 @@ function AdminProjetos(){
                                     <button onClick={()=>{excluirProjeto(p)}}>excluir</button>
                             </div>
                         </div>
+                            :
+                            <span></span>
                         )
                     })
 

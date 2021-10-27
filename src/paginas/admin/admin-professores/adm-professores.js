@@ -5,10 +5,10 @@ import Swal from 'sweetalert2';
 import api from '../../../configs/api'
 
 function AdmProfessores(){
-    const [professores, setProfessores] = useState([1,1]);
+    const [professores, setProfessores] = useState([]);
 
     useEffect(()=>{
-        api.get('...').then((res)=>{
+        api.get('professor/todos-professores').then((res)=>{
             setProfessores(res.data);
         })
     },[])
@@ -65,20 +65,20 @@ function AdmProfessores(){
                         return(
                             <div className="admCardProfessor">
                                 <div className="nomeProfessor">
-                                    <p>Sergio Roberto</p>
+                                    <p>{prof.nome}</p>
                                 </div>
                                 <div className="idProfessor">
-                                    <p>1234</p>
+                                    <p>{prof.chave}</p>
                                 </div>
                                 <div className="botoesProfessor">
                                     <button>editar</button>
                                     <button onClick={()=>{excluirProfessor(prof)}}>excluir</button>
                                 </div>
                                 <div className="cursoProfessor">
-                                    <p>Informática</p>
+                                    <p>{prof.curso}</p>
                                 </div>
                                 <div className="statusProfessor">
-                                    <p>7 avaliações</p>
+                                    <p>{prof.qtd_projetos} projetos</p>
                                 </div>
                             
                             </div>

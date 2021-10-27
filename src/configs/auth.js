@@ -8,16 +8,16 @@ export var autenticado = () => {
     }else{
         return false
     }
-};  // verifica se está auth
-
-export const getToken = () =>{  // retorna o token
-    localStorage.getItem(TOKEN_KEY);
 };
 
-export const login =(token) => {  // efetua o login criando um token
+export const getToken = () =>{
+    return localStorage.getItem(TOKEN_KEY);
+};
+
+export const login =(token) => { 
     localStorage.setItem(TOKEN_KEY, token);
 };
 
-export const logout = () => {  // remove o token 
+export const logout = () => { 
     localStorage.removeItem(TOKEN_KEY);
 };

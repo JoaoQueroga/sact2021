@@ -1,4 +1,5 @@
 CREATE SCHEMA `sact2021` ;
+
 USE sact2021;
 
 CREATE TABLE `sact2021`.`admin` (
@@ -40,3 +41,17 @@ CREATE TABLE `sact2021`.`projetos` (
   `qtd_avaliacoes` INT NULL,
   PRIMARY KEY (`chave`));
 
+CREATE TABLE `sact2021`.`professor` (
+  `chave` INT NOT NULL,
+  `nome` VARCHAR(45) NULL,
+  `curso` VARCHAR(45) NULL,
+  `qtd_projetos` INT NULL,
+  `qtd_avaliacoes` INT NULL,
+  PRIMARY KEY (`chave`));
+
+CREATE TABLE `sact2021`.`criterios` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `criterio` TEXT(1000) NULL,
+  `peso` FLOAT NULL,
+  `curso` VARCHAR(20) NULL,
+  PRIMARY KEY (`id`));

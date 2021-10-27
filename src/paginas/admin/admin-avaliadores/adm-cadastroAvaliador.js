@@ -11,7 +11,7 @@ function AdmCadastroAvaliador(){
     const [nome, setNome] = useState('');
     const [instituicao, setInst] = useState('');
 
-    function cadastraProfessor(){
+    function cadastraAvaliador(){
         if(nome && instituicao){
             api.post('avaliador/atualizaChave',{
                 "novaChave": parseInt(chave)
@@ -69,7 +69,7 @@ function AdmCadastroAvaliador(){
                 </div>
             </div>
             <div className="admCadastroRodape">
-                <button onClick={cadastraProfessor}>cadastrar</button>
+                <button onClick={cadastraAvaliador}>cadastrar</button>
                 <button onClick={cancelar} className="btCancelar">cancelar</button>
             </div>
 

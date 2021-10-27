@@ -8,11 +8,26 @@
 
 .topo-criteriosCurso{
     width: 100%;
-    height: 15vh;
+    height: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.topo-criteriosCurso h2{
+   margin: 0px 0px 10px 0px;
+}
+
+.topo-criteriosCurso a{
+    text-decoration: none;
+    background-color: rgb(148, 36, 36);
+    color: #faf9dc;
+    padding: 5px;
+    width: 200px;
+    margin: 0px;
+    font-size: 20px;
+    border-radius: 5px;
 }
 
 .main-criteriosCurso{

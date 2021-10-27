@@ -11,24 +11,24 @@ function AdmCadastroProfessor(){
     const [nome, setNome] = useState('');
     const [curso, setCurso] = useState('');
 
-    function cadastraAvaliador(){
-        if(nome && curso){
+    function cadastraProfessor(){
+        if(nome && curso && curso!=='-'){
             api.post('professor/atualizaChave',{
                 "novaChave": parseInt(chave)
             }).then(()=>{
-                api.post('professor/cadastra-avaliador', {
-                        "chave": chave,
-                        "nome": nome,
-                        "instituicao": curso
-                }).then(()=>{
-                        Swal.fire({
-                            title: 'Professor cadastrado',
-                            icon: 'success',
-                            confirmButtonText: 'ok',
-                        }).then(() => {
-                            history.push('/adm-avaliadores');
-                        })
-                })
+            api.post('professor/cadastra-professor', {
+                    "chave": chave,
+                    "nome": nome,
+                    "curso": curso
+            }).then(()=>{
+                    Swal.fire({
+                        title: 'Professor cadastrado',
+                        icon: 'success',
+                        confirmButtonText: 'ok',
+                    }).then((result) => {
+                        history.push('/admin-professores');
+                    })
+            })
             })
         }else{
             Swal.fire({
@@ -72,7 +72,7 @@ function AdmCadastroProfessor(){
                 </div>
             </div>
             <div className="admCadastroRodape">
-                <button onClick={cadastraAvaliador}>cadastrar</button>
+                <button onClick={cadastraProfessor}>cadastrar</button>
                 <button onClick={cancelar} className="btCancelar">cancelar</button>
             </div>
 

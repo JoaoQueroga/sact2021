@@ -99,9 +99,9 @@ function Rotas(){
                 <PrivateRoute path="/admin-projetoCadastro/:curso" component={ ProjetoCadastro } />
                 <PrivateRoute exact path="/admin-professores" component={ AdmProfessores } />
                 <PrivateRoute exact path="/cadastro-professor" component={ AdmCadastroProfessor } />
-                <PrivateRoute exact path="/admin-criterios" component={ AdmCriterios } />
+                <PrivateRoute path="/admin-criterios/:curso" component={ AdmCriterios } />
                 <PrivateRoute exact path="/admin-criteriosCursos" component={ CriteriosCurso } />
-                <PrivateRoute exact path="/admin-criterioCadastro" component={ CriterioCadastro } />
+                <PrivateRoute exact path="/admin-criterioCadastro/:curso" component={ CriterioCadastro } />
             
 
                 <Route exact path="/naoauth">

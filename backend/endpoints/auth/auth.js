@@ -14,11 +14,11 @@ auth.post('/admin-login', (req, res)=>{
         }else{
             if(results.length > 0){
                 res.send(token);
+                console.log('admin reslizou a operação o Login');
             }else{
                 res.send(null);
             }
         }
-        console.log('Realizou a operação o Login');
     });
 })
 

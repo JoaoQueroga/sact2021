@@ -1,20 +1,21 @@
 import './adm-criterios.css'
-import {Link} from 'react-router-dom';
+import {Link, useParams} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import Swal from 'sweetalert2';
 import api from '../../../configs/api'
 
 function AdmCriterios(){
-    const [criterios, setCriterios] = useState([1,1,1,1,1,1,1,1,1,1]);
+
+    const {curso} = useParams();
+    const [criterios, setCriterios] = useState([]);
 
     useEffect(()=>{
-        api.get('...').then((res)=>{
+        api.get(`criterios/todos/${curso}`).then((res)=>{
             setCriterios(res.data);
         })
     },[])
 
     function excluirCriterio(c){
-       
         Swal.fire({
             title: 'Excluir critério',
             text: c.nome,
@@ -54,7 +55,7 @@ function AdmCriterios(){
             <div className="topoCriterios">
                 <h3>Critérios de informática</h3>
                 <div className="menuCriterios">
-                    <Link to="/admin-criterioCadastro">cadastrar</Link>
+                    <Link to={`/admin-criterioCadastro/${curso}`}>cadastrar</Link>
                     <Link className="btCancelar" to="/admin-criteriosCursos">voltar</Link>
                 </div>
             </div>
@@ -63,14 +64,14 @@ function AdmCriterios(){
                 {
                     criterios.map((c)=>{
                         return(
-                            <div className="admCardCriterio">
+                            <div className="admCardCriterio" key={c.id}>
                                 
                                 <div className="textoCriterio">
-                                    <p>Mussum Ipsum, cacilds vidis litro abertis. Paisis, filhis, espiritis santis. Em pé sem cair, deitado sem dormir, sentado sem cochilar e fazendo pose. Admodum accumsan disputationi eu sit. Vide electram sadipscing et per. Casamentiss faiz malandris se pirulitá.</p>
+                                    <p>{c.criterio}</p>
                                 </div>
                                 
                                 <div className="statusCriterio">
-                                    <p>peso 1</p>
+                                    <p>peso {c.peso}</p>
                                 </div>
 
                                 <div className="botoesCriterio">
