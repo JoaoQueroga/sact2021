@@ -39,6 +39,7 @@ CREATE TABLE `sact2021`.`projetos` (
   `nota_professor` FLOAT NULL,
   `nota_avaliador` FLOAT NULL,
   `qtd_avaliacoes` INT NULL,
+  `nota_acumulada` FLOAT NULL,
   PRIMARY KEY (`chave`));
 
 CREATE TABLE `sact2021`.`professor` (
@@ -54,4 +55,17 @@ CREATE TABLE `sact2021`.`criterios` (
   `criterio` TEXT(1000) NULL,
   `peso` FLOAT NULL,
   `curso` VARCHAR(20) NULL,
+  PRIMARY KEY (`id`));
+
+CREATE TABLE `sact2021`.`avaliacoes` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `chave_projeto` INT NULL,
+  `chave_avaliador` INT NULL,
+  `nome_projeto` VARCHAR(100) NULL,
+  `nome_avaliador` VARCHAR(100) NULL,
+  `tipo_avaliador` VARCHAR(20) NULL,
+  `nota` FLOAT NULL,
+  `hora_avaliacao` VARCHAR(50) NULL,
+  `curso` VARCHAR(20) NULL,
+  `turma` VARCHAR(5),
   PRIMARY KEY (`id`));

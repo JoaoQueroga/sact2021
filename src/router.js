@@ -60,15 +60,11 @@ function Rotas(){
                 <Route exact path="/avaliador-login">
                     <AvaliadorLogin/>
                 </Route>
-                <Route exact path="/avaliador-inicio">
-                    <AvaliadorInicio/>
-                </Route>
-                <Route exact path="/avaliador-select">
-                    <AvaliadorSelProjeto/>
-                </Route>
-                <Route exact path="/avaliacao">
-                    <AvaliadorAvaliacao/>
-                </Route>
+
+                <PrivateRoute exact path="/avaliador-inicio" component={ AvaliadorInicio } />
+                <PrivateRoute exact path="/avaliador-select" component={ AvaliadorSelProjeto } />
+                <PrivateRoute exact path="/avaliacao" component={ AvaliadorAvaliacao } />
+
 
                 <Route exact path="/professor-login">
                     <ProfessorLogin/>

@@ -65,7 +65,7 @@ projetos.post('/cadastra-projeto', (req, res)=>{
     let aluno4 = req.body.aluno4;
     let curso = req.body.curso;
 
-    let query = `INSERT INTO sact2021.projetos (chave, nome, turma, curso, descricao, aluno1, aluno2, aluno3, aluno4, professor, nota_professor, nota_avaliador, qtd_avaliacoes) VALUES ('${chave}','${nome}', '${turma}', '${curso}', '${descricao}','${aluno1}','${aluno2}','${aluno3}','${aluno4}','','0','0','0')`;
+    let query = `INSERT INTO sact2021.projetos (chave, nome, turma, curso, descricao, aluno1, aluno2, aluno3, aluno4, professor, nota_professor, nota_avaliador, qtd_avaliacoes, nota_acumulada) VALUES ('${chave}','${nome}', '${turma}', '${curso}', '${descricao}','${aluno1}','${aluno2}','${aluno3}','${aluno4}','','0','0','0','0')`;
     executaSql(query, res);
 })
 

@@ -1,4 +1,5 @@
 .avaliadorLogin{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -45,7 +46,7 @@
 }
 
 .mainAvaliador input{
-    width: 80%;
+    width: 75%;
     height: 8%;
     border: none;
     border-bottom: 2px solid #4222DB;
@@ -71,10 +72,10 @@
 }
 
 .mainAvaliador button{
+    width: 200px;
     margin-top: 40px;
     background-color:  #4222DB;
-    width: 80%;
-    height: 8%;
+    height: 40px;
     color:  #faf9dc;
     font-size: 20px;
     border: none;
