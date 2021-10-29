@@ -45,6 +45,18 @@ projetos.get('/todos', (req, res)=>{
     executaSql(query, res);
 })
 
+//projetos ordenados por qtd avaliacoes
+projetos.get('/avaliacoes-realizadas', (req, res)=>{
+    let query = `SELECT * FROM sact2021.projetos ORDER BY qtd_avaliacoes DESC`;
+    executaSql(query, res);
+})
+
+//projetos ordenados por qtd avaliacoes
+projetos.get('/ranking-geral', (req, res)=>{
+    let query = `SELECT * FROM sact2021.projetos ORDER BY (nota_avaliador + nota_professor) DESC`;
+    executaSql(query, res);
+})
+
 //lista todos projetos de um curso  // info | eletro | meca
 projetos.get('/todos/:curso', (req, res)=>{
     let curso = req.params.curso;

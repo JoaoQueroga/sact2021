@@ -55,7 +55,7 @@ function AdmInicio(){
                 <Link to="/admin-professores">professores</Link>
                 <Link to="/admin-criteriosCursos">critérios</Link>
                 <Link to="#">relatórios</Link>
-                <Link to="#">dados</Link>
+                <Link to="/adm-dados/1">dados</Link>
             </div>
             <div className="admInicioRodape">
                 <Link to="/">sair</Link>

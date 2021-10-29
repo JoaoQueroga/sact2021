@@ -28,6 +28,12 @@ avaliacao.get('/todos', (req, res)=>{
     executaSql(query, res);
 })
 
+//projetos ordenados por qtd avaliacoes
+avaliacao.get('/avaliacoes-log', (req, res)=>{
+    let query = `SELECT * FROM sact2021.avaliacoes ORDER BY id DESC`;
+    executaSql(query, res);
+})
+
 //lista todos avaliacoes de um curso  // info | eletro | meca
 avaliacao.get('/todos/:curso', (req, res)=>{
     let curso = req.params.curso;

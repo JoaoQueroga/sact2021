@@ -1,0 +1,121 @@
+.dados{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+}
+
+.dadosTopo{
+    left: 0px;
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    background-color: #faf9dc;
+    box-shadow: 0px 5px 10px #faf9dc;
+}
+
+.dadosTopo button{
+    background-color: #4222DB;
+    width: 150px;
+    color: #faf9dc;
+    border-radius: 5px;
+    padding: 5px;
+    border: none;
+    font-size: 15px;
+    margin: 0px 5px 0px 5px;
+}
+
+.dadosTopo button:hover{
+    background-color: #341bb3;
+}
+
+.dadosMain{
+    margin-top: 10vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10vh;
+}
+
+.dados-projetosAvaliados{
+    display: grid;
+    grid-template-columns: 60% 20% 20%;
+    width: 80%;
+    background-color: #73cef5;
+    margin-top: 1px;
+}
+
+.dados-projetosAvaliados p{
+    font-size: 20px;
+    margin: 0;
+    padding: 0px 0px 0px 10px;
+    text-align: left;
+    border-left: 1px solid  #faf9dc;
+}
+
+.dados-avaliadores{
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    width: 80%;
+    background-color: #73cef5;
+    margin-top: 1px;
+}
+
+.dados-avaliadores p{
+    font-size: 20px;
+    margin: 0;
+    padding: 0px 0px 0px 10px;
+    text-align: left;
+    border-left: 1px solid  #faf9dc;
+}
+
+.dados-avaliacoes{
+    display: grid;
+    grid-template-columns: 30% 30% 10% 20% 10%;
+    width: 80%;
+    background-color: #73cef5;
+    margin-top: 1px;
+}
+
+.dados-avaliacoes p{
+    font-size: 20px;
+    margin: 0;
+    padding: 0px 0px 0px 10px;
+    text-align: left;
+    border-left: 1px solid  #faf9dc;
+}
+
+.dados-ranking{
+    display: grid;
+    grid-template-columns: 40% 20% 20% 20%;
+    width: 80%;
+    background-color: #73cef5;
+    margin-top: 1px;
+}
+
+.dados-ranking p{
+    font-size: 20px;
+    margin: 0;
+    padding: 0px 0px 0px 10px;
+    text-align: left;
+    border-left: 1px solid  #faf9dc;
+}
+
+#btSair{
+    background-color: rgb(148, 36, 36);
+}
+#btSair:hover{
+    background-color:  rgb(92, 24, 24);
+}
+
+#btAtualizar{
+    background-color:  #28ac49;
+}
+#btAtualizar:hover{
+    background-color:  #1f8d3a;
+}

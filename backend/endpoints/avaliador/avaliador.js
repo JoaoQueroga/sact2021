@@ -44,6 +44,14 @@ avaliador.get('/todos-avaliadores', (req, res)=>{
     let query = `SELECT * FROM sact2021.avaliador`;
     executaSql(query, res);
 })
+
+//projetos ordenados por qtd avaliacoes
+avaliador.get('/avaliacoes-realizadas', (req, res)=>{
+    let query = `SELECT * FROM sact2021.avaliador ORDER BY projetos_avaliados DESC`;
+    executaSql(query, res);
+})
+
+
 //cadastra um avaliador
 avaliador.post('/cadastra-avaliador', (req, res)=>{
     let chave = parseInt(req.body.chave);
