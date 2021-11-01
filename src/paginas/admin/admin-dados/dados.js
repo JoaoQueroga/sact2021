@@ -25,10 +25,33 @@ function Dados(){
     const [qtdAvsAv, setQtdAvsAv] = useState(0);
     const [porcAvs, setPorcAvs] = useState(0);
 
+    const [qt0, setqt0] = useState(0);
+    const [qt1, setqt1] = useState(0);
+    const [qt2, setqt2] = useState(0);
+    const [qt3, setqt3] = useState(0);
+    const [qt4, setqt4] = useState(0);
+
+    const [rk1, setRk1] = useState("");
+    const [rk2, setRk2] = useState("");
+    const [rk3, setRk3] = useState("");
+
+    const [rkInfo1, setRkInfo1] = useState("");
+    const [rkInfo2, setRkInfo2] = useState("");
+    const [rkInfo3, setRkInfo3] = useState("");
+
+    const [rkEletro1, setRkEletro1] = useState("");
+    const [rkEletro2, setRkEletro2] = useState("");
+    const [rkEletro3, setRkEletro3] = useState("");
+
+    const [rkMeca1, setRkMeca1] = useState("");
+    const [rkMeca2, setRkMeca2] = useState("");
+    const [rkMeca3, setRkMeca3] = useState("");
+
     useEffect(()=>{
         api.get('projetos/avaliacoes-realizadas').then((res)=>{
            setProjetos(res.data);
            porcentagemProjetos(res.data);
+           contagemProjetosAvaliados(res.data);
         })
         api.get('avaliador/avaliacoes-realizadas').then((res)=>{
             setAvaliadores(res.data);
@@ -39,6 +62,7 @@ function Dados(){
         })
         api.get('projetos/ranking-geral').then((res)=>{
             setRanking(res.data);
+            defineRaking(res.data);
         })
     },[])
 
@@ -73,6 +97,102 @@ function Dados(){
         setOpcao(x);
     }
 
+    function defineRaking(dados){
+
+        console.log(dados);
+
+        if(dados.length >= 3){
+            setRk1(dados[0].nome);
+            setRk2(dados[1].nome);
+            setRk3(dados[2].nome);
+        }else if(dados.length === 2){
+            setRk1(dados[0].nome);
+            setRk2(dados[1].nome);
+        }else if(dados.length === 1){
+            setRk1(dados[0].nome);
+        }
+
+        //raking por curso
+        let info = [];
+        let eletro = [];
+        let meca = [];
+
+        dados.forEach((p)=>{
+            if(p.curso === 'info'){
+                info.push(p);
+            }else if(p.curso === 'eletro'){
+                eletro.push(p);
+            }else if(p.curso === 'meca'){
+                meca.push(p);
+            }
+        })
+        if(info.length >= 3){
+            setRkInfo1(info[0].nome);
+            setRkInfo2(info[1].nome);
+            setRkInfo3(info[2].nome);
+        }else if(info.length === 2){
+            setRkInfo1(info[0].nome);
+            setRkInfo2(info[1].nome);
+        }else if(info.length === 1){
+            setRkInfo1(info[0].nome);
+        }
+        if(eletro.length >= 3){
+            setRkEletro1(eletro[0].nome);
+            setRkEletro2(eletro[1].nome);
+            setRkEletro3(eletro[2].nome);
+        }else if(eletro.length === 2){
+            setRkEletro1(eletro[0].nome);
+            setRkEletro2(eletro[1].nome);
+        }else if(eletro.length === 1){
+            setRkEletro1(eletro[0].nome);
+        }
+        if(meca.length >= 3){
+            setRkMeca1(meca[0].nome);
+            setRkMeca2(meca[1].nome);
+            setRkMeca3(meca[2].nome);
+        }else if(meca.length === 2){
+            setRkMeca1(meca[0].nome);
+            setRkMeca2(meca[1].nome);
+        }else if(meca.length === 1){
+            setRkMeca1(meca[0].nome);
+        }
+    }
+        
+
+    function contagemProjetosAvaliados(dados){
+        let cont0 = 0;
+        let cont1 = 0;
+        let cont2 = 0;
+        let cont3 = 0;
+        let cont4 = 0;
+
+        dados.forEach((p)=>{
+            switch(p.qtd_avaliacoes){
+                case 0:
+                    cont0++;
+                    break;
+                case 1:
+                    cont1++;
+                    break;
+                case 2:
+                    cont2++;
+                    break;
+                case 3:
+                    cont3++;
+                    break;
+                case 4:
+                    cont4++;
+                    break;
+            }
+        })
+        setqt0(((cont0*100)/dados.length).toFixed(1));
+        setqt1(((cont1*100)/dados.length).toFixed(1));
+        setqt2(((cont2*100)/dados.length).toFixed(1));
+        setqt3(((cont3*100)/dados.length).toFixed(1));
+        setqt4(((cont4*100)/dados.length).toFixed(1));
+    }
+
+
     function atualizar(){
         window.location.href=`/adm-dados/${opcao}`;
     }
@@ -81,9 +201,6 @@ function Dados(){
         history.push('/adm-inicio');
     }
 
-    function imprimir(){
-        window.print();
-    }
 
     return(
         <div className="dados">
@@ -93,7 +210,7 @@ function Dados(){
                 <button onClick={()=>escolheOpcao(3)} style={opcao===3?{"border":"5px solid #28ac49"}:{"border":"none"}}>avaliadores</button>
                 <button onClick={()=>escolheOpcao(4)} style={opcao===4?{"border":"5px solid #28ac49"}:{"border":"none"}}>avaliações</button>
                 <button onClick={()=>escolheOpcao(5)} style={opcao===5?{"border":"5px solid #28ac49"}:{"border":"none"}}>ranking parcial</button>
-                <button id="btImprimir" onClick={imprimir}>imprimir</button>
+            
                 <button id="btAtualizar" onClick={atualizar}>atualizar</button>
                 <button id="btSair" onClick={voltar}>voltar</button>
             </div>
@@ -124,77 +241,78 @@ function Dados(){
                             </div>
                             <div className="dl1">
                                 <div className="l1-info">
-                                    <h1>30%</h1>
+                                    <h1>10%</h1>
                                     <p>10/100</p>
                                 </div>
                                 <div className="barra">
                                     <div className="fill" style={{"width":"67%"}}></div>
                                 </div>
-                                <p>indefinido</p>
+                                <p>[sem definição]</p>
                             </div>
                         </div>
+                        <p>avaliações por projeto</p>
                         <div className="l2">
                             <div className="dl2">
-                                <h2>30%</h2>
-                                <p> de projetos com</p>
+                                <h2>{qt0}%</h2>
+                                
                                 <p>0 avaliaçoes</p>
                             </div>
                             <div className="dl2">
-                                <h2>30%</h2>
-                                <p> de projetos com</p>
+                                <h2>{qt1}%</h2>
+                                
                                 <p>1 avaliaçoes</p>
                             </div>
                             <div className="dl2">
-                                <h2>30%</h2>
-                                <p> de projetos com</p>
+                                <h2>{qt2}%</h2>
+                               
                                 <p>2 avaliaçoes</p>
                             </div>
                             <div className="dl2">
-                                <h2>30%</h2>
-                                <p> de projetos com</p>
+                                <h2>{qt3}%</h2>
+                                
                                 <p>3 avaliaçoes</p>
                             </div>
                             <div className="dl2">
-                                <h2>30%</h2>
-                                <p> de projetos com</p>
+                                <h2>{qt4}%</h2>
+                               
                                 <p>4 avaliaçoes</p>
                             </div>
                         </div>
                         <div className="l3">
                             <div className="dl3">
-                                <p className="rkCurso1">projetos a</p>
-                                <p className="rkCurso2">projetos b</p>
-                                <p className="rkCurso3">projetos c</p>
+                                <p className="rkCurso1">{rkInfo1}</p>
+                                <p className="rkCurso2">{rkInfo2}</p>
+                                <p className="rkCurso3">{rkInfo3}</p>
                                 <p className="rkInfo">Ranking Informatica</p>
                             </div>
                             <div className="dl3">
-                                <p className="rkCurso1">projetos b</p>
-                                <p className="rkCurso2">projetos c</p>
-                                <p className="rkCurso3">projetos c</p>
+                                <p className="rkCurso1">{rkEletro1}</p>
+                                <p className="rkCurso2">{rkEletro2}</p>
+                                <p className="rkCurso3">{rkEletro3}</p>
                                 <p className="rkInfo">Ranking Eletrônica</p>
                             </div>
                             <div className="dl3">
-                                <p className="rkCurso1">projetos b</p>
-                                <p className="rkCurso2">projetos c</p>
-                                <p className="rkCurso3">projetos c</p>
+                                <p className="rkCurso1">{rkMeca1}</p>
+                                <p className="rkCurso2">{rkMeca2}</p>
+                                <p className="rkCurso3">{rkMeca3}</p>
                                 <p className="rkInfo">Ranking Mecatrônica</p>
                             </div>
                         </div>
                         <div className="l4">
                             <div className="dl4">
-                                <h3>projetos a</h3>
+                                <h3>{rk2}</h3>
                                 <div id="palco2">
                                     <p>2°</p>
                                 </div>
                             </div>
                             <div className="dl4">
-                                <h3>projetos b</h3>
+                                <h3>{rk1}</h3>
                                 <div id="palco1">
                                     <p>1°</p>
                                 </div>
                             </div>
                             <div className="dl4">
-                                <h3>projetos c</h3>
+                                <h3>{rk3}</h3>
                                 <div id="palco3">
                                     <p>3°</p>
                                 </div>
