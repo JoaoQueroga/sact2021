@@ -1,13 +1,12 @@
-import './projetoCadastro.css';
+import '../admin/admin-projetos/projetoCadastro.css';
 import {useHistory, useParams} from 'react-router-dom';
 import { useState , useEffect} from 'react';
-import api from '../../../configs/api';
+import api from '../../configs/api';
 import Swal from 'sweetalert2';
 
 
-function ProjetoCadastro(){
+function ProfessorProjetoCadastro(props){
 
-    let {curso} = useParams();
 
     const history = useHistory();
 
@@ -25,7 +24,15 @@ function ProjetoCadastro(){
     const [chave, setChave] = useState(11111);
 
     function cancelar(){
-        history.push(`/admin-projetos/${curso}`);
+        history.push({
+            pathname: `/professor-projetos`,
+            state: {
+                chave:  props.location.state.chave,
+                nome:  props.location.state.nome,
+                curso:  props.location.state.curso,
+                qtd_avaliacoes: props.location.state.qtd_avaliacoes
+            }
+       });
     }
 
     function defineQtdAlunos(valor){
@@ -82,15 +89,23 @@ function ProjetoCadastro(){
                     "aluno2": aluno2,
                     "aluno3": aluno3,
                     "aluno4": aluno4,
-                    "professor": "admin",
-                    "curso": curso /// <--------------------------------alterar aqui
+                    "professor": props.location.state.nome,
+                    "curso": props.location.state.curso /// <--------------------------------alterar aqui
             }).then(()=>{
                     Swal.fire({
                         title: 'Projeto cadastrado',
                         icon: 'success',
                         confirmButtonText: 'ok',
                     }).then((result) => {
-                        history.push(`/admin-projetos/${curso}`);
+                        history.push({
+                            pathname: `/professor-projetos`,
+                            state: {
+                                chave:  props.location.state.chave,
+                                nome:  props.location.state.nome,
+                                curso:  props.location.state.curso,
+                                qtd_avaliacoes: props.location.state.qtd_avaliacoes
+                            }
+                       });
                     })
             })
             })
@@ -104,15 +119,16 @@ function ProjetoCadastro(){
     }
 
     useEffect(()=>{
+        
         api.get('projetos/pegaChave').then((res)=>{
            setChave(res.data.chave);
         })
 
-        if(curso === 'info'){ // nome do curso na interface
+        if(props.location.state.curso === 'info'){ // nome do curso na interface
             setC("informática")
-        }else if(curso === 'eletro'){
+        }else if(props.location.state.curso === 'eletro'){
             setC("eletrônica")
-        }else if(curso === 'meca'){
+        }else if(props.location.state.curso === 'meca'){
             setC("mecatrônica")
         }
     },[])
@@ -133,14 +149,14 @@ function ProjetoCadastro(){
                         </div>
                         <div className="selectTurma">
                             { //dependendo do curso tem turmas diferentes
-                                curso==="eletro"?
+                                props.location.state.curso==="eletro"?
                                 <select defaultValue={"-"} value={turma} onChange={(e)=>setTurma(e.target.value)}>
                                     <option value="-">-</option>
                                     <option value="3AE">3AE</option>
                                     <option value="3BE">3BE</option>
                                 </select>
                                 :
-                                curso==="info"?
+                                props.location.state.curso==="info"?
                                 <select defaultValue={"-"} value={turma} onChange={(e)=>setTurma(e.target.value)}>
                                     <option value="-">-</option>
                                     <option value="3AI">3AI</option>
@@ -148,7 +164,7 @@ function ProjetoCadastro(){
                                     <option value="3CI">3CI</option>
                                 </select>
                                 :
-                                curso==="meca"?
+                                props.location.state.curso==="meca"?
                                 <select defaultValue={"-"} value={turma} onChange={(e)=>setTurma(e.target.value)}>
                                     <option value="-">-</option>
                                     <option value="3AM">3AM</option>
@@ -195,4 +211,4 @@ function ProjetoCadastro(){
     )
 }
 
-export default ProjetoCadastro;
+export default ProfessorProjetoCadastro;

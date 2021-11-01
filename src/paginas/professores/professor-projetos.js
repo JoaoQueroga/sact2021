@@ -1,27 +1,26 @@
 import {Link, useParams} from 'react-router-dom';
-import './admin-projetos.css';
+import '../admin/admin-projetos/admin-projetos.css';
 import {useState, useEffect} from 'react';
-import api from '../../../configs/api';
+import api from '../../configs/api';
 import Swal from 'sweetalert2';
 
-function AdminProjetos(){
-
-    let {curso} = useParams();
+function ProfessorProjetos(props){
 
     const [projetos, setProjetos] = useState([]); 
     const [c, setC] = useState("");
     const [filtro, setFiltro] = useState('-');
 
     useEffect(()=>{
-        api.get(`projetos/todos/${curso}`).then((res)=>{
+
+        api.get(`projetos/todos/${props.location.state.curso}`).then((res)=>{
             setProjetos(res.data);
         })
 
-        if(curso === 'info'){ // nome do curso na interface
+        if(props.location.state.curso === 'info'){ // nome do curso na interface
             setC("informática")
-        }else if(curso === 'eletro'){
+        }else if(props.location.state.curso === 'eletro'){
             setC("eletrônica")
-        }else if(curso === 'meca'){
+        }else if(props.location.state.curso === 'meca'){
             setC("mecatrônica")
         }
 
@@ -69,20 +68,20 @@ function AdminProjetos(){
                 <h2>Projetos de {c}</h2>
                 <div className="menuProjeto">
                     {//filtro dinamico
-                        curso==="info"?
+                        props.location.state.curso==="info"?
                         <select value={filtro} onChange={(e)=>{setFiltro(e.target.value)}}>
                             <option value="-">todos</option>
                             <option value="3AI">3AI</option>
                             <option value="3BI">3BI</option>
                             <option value="3CI">3CI</option>
                         </select>
-                        :curso==="eletro"?
+                        :props.location.state.curso==="eletro"?
                         <select value={filtro} onChange={(e)=>{setFiltro(e.target.value)}}>
                             <option value="-">todos</option>
                             <option value="3AE">3AE</option>
                             <option value="3BE">3BE</option>
                         </select>
-                        :curso==="meca"?
+                        :props.location.state.curso==="meca"?
                         <select value={filtro} onChange={(e)=>{setFiltro(e.target.value)}}>
                             <option value="-">todos</option>
                             <option value="3AM">3AM</option>
@@ -92,8 +91,24 @@ function AdminProjetos(){
                         :
                         <span></span>
                     }
-                    <Link to={`/admin-projetoCadastro/${curso}`}>cadastrar</Link>
-                    <Link className="btCancelarProjeto" to="/admin-projetos">voltar</Link>
+                    <Link to={{
+                            pathname: `/professor-projeto-cadastro`,
+                            state: {
+                                chave:  props.location.state.chave,
+                                nome:  props.location.state.nome,
+                                curso:  props.location.state.curso,
+                                qtd_avaliacoes: props.location.state.qtd_avaliacoes
+                            }
+                    }}>cadastrar</Link>
+                    <Link className="btCancelarProjeto" to={{
+                        pathname: '/professor-inicio',
+                        state: {
+                            chave:  props.location.state.chave,
+                            nome:  props.location.state.nome,
+                            curso:  props.location.state.curso,
+                            qtd_avaliacoes: props.location.state.qtd_avaliacoes
+                        }
+                    }}>voltar</Link>
                 </div>
             </div>
             <div className="main-adminCursos">
@@ -141,4 +156,4 @@ function AdminProjetos(){
     )
 }
 
-export default AdminProjetos;
+export default ProfessorProjetos;

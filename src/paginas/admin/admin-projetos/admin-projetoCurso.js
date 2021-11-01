@@ -19,13 +19,14 @@ function AdminProjetoCursos(){
         api.get('projetos/cont/eletro').then((res)=>{
             setQtdEletro(res.data[0].cont);
         })
+
     }, [])
 
     return(
         <div className="adminCursosP">
             <div className="topo-adminCursosP">
                 <h2>Projetos - cursos</h2>
-                <Link to="/adm-inicio">voltar</Link>
+                <Link to="/adm-inicio">voltar</Link> 
             </div>
             <div className="main-adminCursosP">
                <Link to="/admin-projetos/info">Informática <span>{info}</span></Link>

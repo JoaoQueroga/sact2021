@@ -169,8 +169,14 @@
     grid-template-rows: auto auto;
 }
 
+.Professor{
+    grid-column: span 2;
+    border-bottom: 1px solid #faf9dc;
+    border-right: 1px solid #faf9dc;
+}
+
 .nomeProjeto{
-    grid-column: span 3;
+    grid-column: span 1;
     border-bottom: 1px solid #faf9dc;
     border-right: 1px solid #faf9dc;
 }
@@ -185,6 +191,11 @@
 }
 
 .nomeProjeto p{
+    margin: 0px;
+    font-weight: bold;
+}
+
+.Professor p{
     margin: 0px;
     font-weight: bold;
 }

@@ -10,7 +10,9 @@ import AvaliadorSelProjeto from './paginas/avaliadores/avaliador-selProjeto';
 import AvaliadorAvaliacao from './paginas/avaliadores/avaliador-avaliacao';
 //professor
 import ProfessorLogin from './paginas/professores/professorLogin';
-import ProfessorSelecionaProjeto from  './paginas/professores/professor-selecionaProjeto';
+import ProfessorInicio from  './paginas/professores/professor-inicio';
+import ProfessorProjetos from './paginas/professores/professor-projetos';
+import ProfessorProjetoCadastro from './paginas/professores/professor-cadastro-projeto';
 //visitante
 import VisitanteInicio from './paginas/visitante/visitante-inicio';
 import VisitanetSelect from './paginas/visitante/visitante-selecionaProjeto';
@@ -67,13 +69,14 @@ function Rotas(){
                 <PrivateRoute exact path="/avaliador-select" component={ AvaliadorSelProjeto } />
                 <PrivateRoute exact path="/avaliacao" component={ AvaliadorAvaliacao } />
 
+                <PrivateRoute exact path="/professor-inicio" component={ ProfessorInicio } />
+                <PrivateRoute path="/professor-projetos" component={ ProfessorProjetos } />
+                <PrivateRoute path="/professor-projeto-cadastro" component={ ProfessorProjetoCadastro } />
 
                 <Route exact path="/professor-login">
                     <ProfessorLogin/>
                 </Route>
-                <Route exact path="/professor-select">
-                    <ProfessorSelecionaProjeto/>
-                </Route>
+               
 
                 <Route exact path="/visitante-inicio">
                     <VisitanteInicio/>

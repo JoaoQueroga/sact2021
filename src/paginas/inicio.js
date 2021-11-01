@@ -9,10 +9,12 @@ function Inicio(){
         logout(); // faz o logout
     })
 
+    const ano = new Date().getFullYear();
+
     return(
         <div className="inicio">
             <div className="topo">
-                <h1>Feira tecnológica</h1>
+                <h1>Feira tecnológica {ano}</h1>
             </div>
             <div className="main">
                <Link to="/avaliador-login">Sou avaliador</Link>

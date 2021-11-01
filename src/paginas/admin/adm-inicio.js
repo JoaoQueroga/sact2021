@@ -51,7 +51,12 @@ function AdmInicio(){
             </div>
             <div className="admInicioOpcoes">
                 <Link to="/adm-avaliadores">avaliadores</Link>
-                <Link to="/admin-projetos">projetos</Link>
+                <Link to={{
+                    pathname: '/admin-projetos',
+                    state: {
+                        curso: "admin"
+                    }
+                }}>projetos</Link>
                 <Link to="/admin-professores">professores</Link>
                 <Link to="/admin-criteriosCursos">critérios</Link>
                 <Link to="#">relatórios</Link>

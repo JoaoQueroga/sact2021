@@ -61,9 +61,9 @@ function AdmCadastroProfessor(){
                     <label>curso</label>
                     <select value={curso} onChange={(e)=>setCurso(e.target.value)}>
                         <option>-</option>
-                        <option value="informatica">Informática</option>
-                        <option value="eletronica">Eletrônica</option>
-                        <option value="mecatronica">Mecatrônica</option>
+                        <option value="info">Informática</option>
+                        <option value="eletro">Eletrônica</option>
+                        <option value="meca">Mecatrônica</option>
                     </select>
                     <label>chave</label>
                     <div>

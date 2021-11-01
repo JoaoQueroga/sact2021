@@ -1,0 +1,53 @@
+.professor-inicio{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.professor-inicio-topo{
+    width: 80%;
+    height: 20vh;
+}
+
+.professor-inicio-topo h2{
+    margin-bottom: 0px;
+}
+
+.professor-inicio-topo p{
+    margin-top: 0px;
+ }
+
+.professor-inicio-main{
+    width: 80%;
+    height: 70vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.professor-inicio-main button{
+    width: 200px;
+    margin-top: 40px;
+    background-color:  #4222DB;
+    height: 40px;
+    color:  #faf9dc;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+    margin: 0px 5px 0px 5px;
+}
+
+.professor-inicio-main button:hover{
+    background-color:  #341bb3;
+}
+.professor-inicio-rodape{
+    width: 80%;
+    height: 10vh;
+}
+
+.professor-inicio-rodape a{
+    text-decoration: none;
+}
