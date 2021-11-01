@@ -7,7 +7,7 @@ import api from '../../configs/api';
 
 function AvaliadorSelProjeto(props){
     
-    const qtd_max_avaliacoes = 5;
+    const qtd_max_avaliacoes = 4;
 
     const history = useHistory();
     const [codigo, setCodigo] = useState('');

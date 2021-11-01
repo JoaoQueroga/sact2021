@@ -7,6 +7,7 @@ const contador = 27; // incremento na chave
 function executaSql(query, res){ // executa a query e responde
     conexao.query(query, function(error, results){
         if(error){ 
+            console.log(error);
             res.json(error);
         }else{
             res.json(results);

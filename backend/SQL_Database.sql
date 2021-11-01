@@ -2,13 +2,13 @@ CREATE SCHEMA `sact2021` ;
 
 USE sact2021;
 
-CREATE TABLE `sact2021`.`admin` (
+CREATE TABLE IF NOT EXISTS `sact2021`.`admin` (
   `chave` VARCHAR(20) NOT NULL,
   `nome` VARCHAR(45) NULL,
   PRIMARY KEY (`chave`));
 
 
-CREATE TABLE `sact2021`.`chaves` (
+CREATE TABLE IF NOT EXISTS `sact2021`.`chaves` (
   `id` INT NOT NULL,
   `chave_avaliador` VARCHAR(32) NULL,
   `chave_professor` VARCHAR(32) NULL,
@@ -17,7 +17,7 @@ CREATE TABLE `sact2021`.`chaves` (
   
   INSERT INTO `sact2021`.`chaves` (`id`, `chave_avaliador`, `chave_professor`, `chave_projeto`) VALUES ('1', '10000', '10000', '10000');
 
-CREATE TABLE `sact2021`.`avaliador` (
+CREATE TABLE IF NOT EXISTS `sact2021`.`avaliador` (
   `chave` INT NOT NULL,
   `nome` VARCHAR(45) NULL,
   `instituicao` VARCHAR(50) NULL,
@@ -25,7 +25,7 @@ CREATE TABLE `sact2021`.`avaliador` (
   PRIMARY KEY (`chave`));
 
 
-CREATE TABLE `sact2021`.`projetos` (
+CREATE TABLE IF NOT EXISTS `sact2021`.`projetos` (
   `chave` INT NOT NULL,
   `nome` VARCHAR(100) NOT NULL,
   `turma` VARCHAR(10) NULL,
@@ -42,7 +42,7 @@ CREATE TABLE `sact2021`.`projetos` (
   `nota_acumulada` FLOAT NULL,
   PRIMARY KEY (`chave`));
 
-CREATE TABLE `sact2021`.`professor` (
+CREATE TABLE IF NOT EXISTS `sact2021`.`professor` (
   `chave` INT NOT NULL,
   `nome` VARCHAR(45) NULL,
   `curso` VARCHAR(45) NULL,
@@ -50,14 +50,14 @@ CREATE TABLE `sact2021`.`professor` (
   `qtd_avaliacoes` INT NULL,
   PRIMARY KEY (`chave`));
 
-CREATE TABLE `sact2021`.`criterios` (
+CREATE TABLE IF NOT EXISTS `sact2021`.`criterios` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `criterio` TEXT(1000) NULL,
   `peso` FLOAT NULL,
   `curso` VARCHAR(20) NULL,
   PRIMARY KEY (`id`));
 
-CREATE TABLE `sact2021`.`avaliacoes` (
+CREATE TABLE IF NOT EXISTS `sact2021`.`avaliacoes` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `chave_projeto` INT NULL,
   `chave_avaliador` INT NULL,
