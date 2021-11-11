@@ -208,9 +208,9 @@ function Dados(){
             position: 'top-end',
             title: 'legenda',
             html:
-            '<p style="text-align:left"><b style="color:#28ac49">VERDE------</b> finalizado</p>' +
-            '<p style="text-align:left"><b style="color:#65fa0f">AMARELO--</b> avaliado, porém incompleto</p>' +
-            '<p style="text-align:left"><b style="color:#ec601f">VERMELHO-</b> sem avaliações</p>',
+            '<p style="text-align:left"><b style="color:#28ac49">VERD.</b> finalizado</p>' +
+            '<p style="text-align:left"><b style="color:#65fa0f">AMAR.</b> avaliado, porém incompleto</p>' +
+            '<p style="text-align:left"><b style="color:#ec601f">VERM.</b> sem avaliações</p>',
             confirmButtonText: 'entedi',
         })
     }
@@ -473,11 +473,11 @@ function Dados(){
                                 <div className="dados-ranking" key={p.chave}>
                                     <p>{p.turma}</p>
                                     <p>{p.nome}</p>
-                                    <p>{p.nota_professor!==0 ? parseFloat(p.nota_professor).toFixed(3):'-'}</p>
-                                    <p>{p.n1!==0 ? parseFloat(p.n1).toFixed(3):'-'}</p>
-                                    <p>{p.n2!==0 ? parseFloat(p.n2).toFixed(3):'-'}</p>
-                                    <p>{p.n3!==0 ? parseFloat(p.n3).toFixed(3):'-'}</p>
-                                    <p>{p.n4!==0 ? parseFloat(p.n4).toFixed(3):'-'}</p>
+                                    <p>{(p.nota_professor)}</p>
+                                    <p>{p.n1!==0 ? parseFloat(p.n1):'-'}</p>
+                                    <p>{p.n2!==0 ? parseFloat(p.n2):'-'}</p>
+                                    <p>{p.n3!==0 ? parseFloat(p.n3):'-'}</p>
+                                    <p>{p.n4!==0 ? parseFloat(p.n4):'-'}</p>
                                     <b><p>{(p.nota_final).toFixed(3)}</p></b>
                                 </div>
                             )

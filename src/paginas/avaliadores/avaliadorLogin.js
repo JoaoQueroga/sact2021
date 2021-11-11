@@ -71,7 +71,7 @@ function AvaliadorLogin(){
             </div>
             <div className="mainAvaliador">
                 
-                <input type="number" placeholder="ex: 1001" value={chave} onChange={(e)=>setChave(e.target.value)}/>
+                <input type="number" placeholder="ex: 10001" value={chave} onChange={(e)=>setChave(e.target.value)}/>
                 <label>informe a sua chave</label>
                 <button onClick={logirAvaliador}>entrar</button>
             </div>

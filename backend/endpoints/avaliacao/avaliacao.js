@@ -71,6 +71,16 @@ avaliacao.post('/avaliar', (req, res)=>{
     executaSql(query, res);
 })
 
+//avaliacao/professor/
+avaliacao.post('/professor/:chave', (req, res)=>{
+    let chave = req.params.chave;
+    let nota_professor = req.body.nota_professor;
+    let nota_final = req.body.nota_final;
+    let query = `UPDATE sact2021.projetos SET nota_professor = '${nota_professor}', nota_final = '${nota_final}' WHERE (chave = '${chave}')`;
+    executaSql(query, res);
+})
+
+
 //atualiza a nota e quantidade no projeto
 avaliacao.post('/atualiza-nota-projeto/:chave', (req, res)=>{
     let chave = req.params.chave;

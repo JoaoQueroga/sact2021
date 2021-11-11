@@ -38,7 +38,7 @@ function AvaliadorInicio(props){
             </div>
             <div className="mainAvaliador">
                 <h1>{projetosAvaliados}</h1>
-                {projetosAvaliados < 2?<p>projeto avaliado</p>:<p>projetos avaliados</p>}
+                <p>projetos avaliados</p>
                 <button className="btAv" onClick={avaliarNovo}>avaliar novo projeto</button>
             </div>
             <div className="rodapeAvaliador">

@@ -127,7 +127,7 @@
 
 .dados-ranking{
     display: grid;
-    grid-template-columns: 5% 35% 10% 10% 10% 10% 10% 10%;
+    grid-template-columns: 8% 42% 8% 8% 8% 8% 8% 10%;
     width: 90%;
     background-color: #73cef5;
     border-bottom: 1px solid  #faf9dc;

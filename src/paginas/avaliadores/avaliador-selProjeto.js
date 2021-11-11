@@ -1,5 +1,5 @@
 import {Link, useHistory} from 'react-router-dom';
-import QrReader from 'react-qr-reader'; //qr code
+//import QrReader from 'react-qr-reader'; //qr code
 import React,{useState, useEffect} from 'react';
 import Swal from 'sweetalert2'; // alerta
 import './avaliador.css';
@@ -18,14 +18,14 @@ function AvaliadorSelProjeto(props){
     const[nome, setNome] = useState('');
     const[instituicao, setInstituicao] = useState('');
 
-    function handleScan(data) {
+    /*function handleScan(data) {
         if (data) {
             setCodigo(data);
         }
       }
     function handleError(err){
         console.error(err)
-    }
+    }*/
 
     useEffect(()=>{ 
         setChave(props.location.state.chave);
@@ -102,10 +102,10 @@ function AvaliadorSelProjeto(props){
     return(
         <div className="visitanteInicio">
             <div className="topoAvaliador">
-                <p>Escaneie o QR Code ou digite o código</p>
+                <h3>Seleção de projeto</h3>
             </div>
             <div className="mainAvaliador">
-                <div className="qr">
+                {/*<div className="qr">
                     <QrReader
                     delay={500}
                     showViewFinder={false}
@@ -113,8 +113,8 @@ function AvaliadorSelProjeto(props){
                     onScan={handleScan}
                     style={{ width: '100%' }}
                     />
-                </div>
-                <input type="text" placeholder="ex: 1001" value={codigo} onChange={(e)=>{setCodigo(e.target.value)}}/>
+                    </div>*/}
+                <input type="number" placeholder="ex: 10001" value={codigo} onChange={(e)=>{setCodigo(e.target.value)}}/>
                 <label>código do projeto</label>
                 <button onClick={avaliar}>avaliar</button>
             </div>
