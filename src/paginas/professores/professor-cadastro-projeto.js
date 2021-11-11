@@ -1,5 +1,5 @@
 import '../admin/admin-projetos/projetoCadastro.css';
-import {useHistory, useParams} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 import { useState , useEffect} from 'react';
 import api from '../../configs/api';
 import Swal from 'sweetalert2';

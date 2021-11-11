@@ -19,7 +19,7 @@ function Inicio(){
             <div className="main">
                <Link to="/avaliador-login">Sou avaliador</Link>
                <Link to="/professor-login">Sou professor</Link>
-               <Link to="/visitante-inicio">Sou visitante</Link>
+               {/*<Link to="/visitante-inicio">Sou visitante</Link>*/}
             </div>
             <div className="rodape">
                 <Link to="/adm-login">administrador</Link>

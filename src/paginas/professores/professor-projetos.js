@@ -1,4 +1,4 @@
-import {Link, useParams} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import '../admin/admin-projetos/admin-projetos.css';
 import {useState, useEffect} from 'react';
 import api from '../../configs/api';

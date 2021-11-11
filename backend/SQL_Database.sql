@@ -37,9 +37,12 @@ CREATE TABLE IF NOT EXISTS `sact2021`.`projetos` (
   `aluno4` VARCHAR(50) NULL,
   `professor` VARCHAR(50) NULL,
   `nota_professor` FLOAT NULL,
-  `nota_avaliador` FLOAT NULL,
+  `n1` FLOAT NULL,
+  `n2` FLOAT NULL,
+  `n3` FLOAT NULL,
+  `n4` FLOAT NULL,
   `qtd_avaliacoes` INT NULL,
-  `nota_acumulada` FLOAT NULL,
+  `nota_final` FLOAT NULL,
   PRIMARY KEY (`chave`));
 
 CREATE TABLE IF NOT EXISTS `sact2021`.`professor` (

@@ -28,7 +28,7 @@ avaliacao.get('/todos', (req, res)=>{
     executaSql(query, res);
 })
 
-//projetos ordenados por qtd avaliacoes
+//log de avaliacoes
 avaliacao.get('/avaliacoes-log', (req, res)=>{
     let query = `SELECT * FROM sact2021.avaliacoes ORDER BY id DESC`;
     executaSql(query, res);
@@ -41,6 +41,19 @@ avaliacao.get('/todos/:curso', (req, res)=>{
     executaSql(query, res);
 })
 
+//lista todos avaliacoes de um projeto  
+avaliacao.get('/projeto/:chave', (req, res)=>{
+    let chave = req.params.chave;
+    let query = `SELECT * FROM sact2021.avaliacoes WHERE (chave_projeto = '${chave}')`;
+    executaSql(query, res);
+})
+
+//lista todos avaliacoes de um avaliador  
+avaliacao.get('/avaliador/:chave', (req, res)=>{
+    let chave = req.params.chave;
+    let query = `SELECT * FROM sact2021.avaliacoes WHERE (chave_avaliador = '${chave}')`;
+    executaSql(query, res);
+})
 
 //cadastra uma avaliacao
 avaliacao.post('/avaliar', (req, res)=>{
@@ -61,12 +74,16 @@ avaliacao.post('/avaliar', (req, res)=>{
 //atualiza a nota e quantidade no projeto
 avaliacao.post('/atualiza-nota-projeto/:chave', (req, res)=>{
     let chave = req.params.chave;
-    let nota = req.body.nota_avaliador;
+    let n1 = req.body.n1;
+    let n2 = req.body.n2;
+    let n3 = req.body.n3;
+    let n4 = req.body.n4;
     let qtd = req.body.qtd_avaliacoes;
-    let nota_acumulada = req.body.nota_acumulada;
-    let query = `UPDATE sact2021.projetos SET nota_avaliador = '${nota}', qtd_avaliacoes = '${qtd}', nota_acumulada = '${nota_acumulada}' WHERE (chave = '${chave}')`;
+    let nota_final = req.body.nota_final;
+    let query = `UPDATE sact2021.projetos SET n1 = '${n1}', n2 = '${n2}', n3 = '${n3}', n4 = '${n4}', qtd_avaliacoes = '${qtd}', nota_final = '${nota_final}' WHERE (chave = '${chave}')`;
     executaSql(query, res);
 })
+
 
 //atualiza a e quantidade de projetos avaliador
 avaliacao.post('/atualiza-qtd-projetos/:chave', (req, res)=>{

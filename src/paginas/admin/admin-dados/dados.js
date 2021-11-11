@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react';
 import './dados.css';
 import api from '../../../configs/api';
 import {useHistory, useParams} from 'react-router-dom';
-
+import Swal from 'sweetalert2'; // alerta
 
 function Dados(){
 
@@ -183,6 +183,8 @@ function Dados(){
                 case 4:
                     cont4++;
                     break;
+                default:
+                    break;
             }
         })
         setqt0(((cont0*100)/dados.length).toFixed(1));
@@ -200,6 +202,72 @@ function Dados(){
     function voltar(){
         history.push('/adm-inicio');
     }
+
+    function info(){
+        Swal.fire({
+            position: 'top-end',
+            title: 'legenda',
+            html:
+            '<p style="text-align:left"><b style="color:#28ac49">VERDE------</b> finalizado</p>' +
+            '<p style="text-align:left"><b style="color:#65fa0f">AMARELO--</b> avaliado, porém incompleto</p>' +
+            '<p style="text-align:left"><b style="color:#ec601f">VERMELHO-</b> sem avaliações</p>',
+            confirmButtonText: 'entedi',
+        })
+    }
+
+    function dequem(c, nome){
+        api.get(`avaliacao/projeto/${c}`)
+        .then((res)=>{
+            
+            let msg = '';
+            if(res.data.length=== 0){
+                msg = '<b>sem avaliações</b>'
+            }else{
+                res.data.forEach((av)=>{
+                    msg += '<p style="text-align:left"><b>'+av.nota+'</b> - '+av.nome_avaliador+'</p>'
+                })
+            }
+
+            Swal.fire({
+                title: nome,
+                html: msg,
+                confirmButtonText: 'ok',
+            })
+        }).catch(()=>{
+            Swal.fire({
+                title: "ERRO",
+                confirmButtonText: 'ok',
+            })
+        })
+        
+    }
+
+    function quais(c, nome){
+        api.get(`avaliacao/avaliador/${c}`)
+        .then((res)=>{
+            let msg = '';
+            if(res.data.length=== 0){
+                msg = '<b>sem avaliações</b>'
+            }else{
+                res.data.forEach((av)=>{
+                    msg += '<p style="text-align:left"><b>'+av.nota+'</b> - '+av.nome_projeto+'</p>'
+                })
+            }
+
+            Swal.fire({
+                title: nome,
+                html: msg,
+                confirmButtonText: 'ok',
+            })
+        }).catch(()=>{
+            Swal.fire({
+                title: "ERRO",
+                confirmButtonText: 'ok',
+            })
+        })
+        
+    }
+
 
 
     return(
@@ -325,7 +393,7 @@ function Dados(){
                     <div className="dados-projetosAvaliados" style={{"background":" #faf9dc"}}>
                         <p className="dadosRotulo">nome</p>
                         <p className="dadosRotulo">turma</p>
-                        <p className="dadosRotulo">avaliações</p>
+                        <div id="info-rot"><p className="dadosRotulo">avaliações</p> <button onClick={info}>info</button></div>
                     </div>
                     {
                         projetos.map((p)=>{
@@ -336,7 +404,7 @@ function Dados(){
                                 >
                                     <p>{p.nome}</p>
                                     <p>{p.turma}</p>
-                                    <p>{p.qtd_avaliacoes}</p>
+                                    <div id="info-proj"><p>{p.qtd_avaliacoes}</p><button id="det" onClick={()=>dequem(p.chave, p.nome)}>de quem?</button></div>
                                 </div>
                             )
                         })
@@ -358,7 +426,7 @@ function Dados(){
                                 >
                                     <p>{p.nome}</p>
                                     <p>{p.instituicao}</p>
-                                    <p>{p.projetos_avaliados}</p>
+                                    <div id="info-proj"><p>{p.projetos_avaliados}</p><button id="det" onClick={()=>quais(p.chave, p.nome)}>quais?</button></div>
                                 </div>
                             )
                         })
@@ -390,11 +458,14 @@ function Dados(){
                 : opcao===5?
                 <div className="dadosMain">
                     <div className="dados-ranking" style={{"background":" #faf9dc"}}>
-                        <p className="dadosRotulo">turma</p>
+                        <p className="dadosRotulo">T</p>
                         <p className="dadosRotulo">projeto</p>
-                        <p className="dadosRotulo">professor</p>
-                        <p className="dadosRotulo">avaliador</p>
-                        <p className="dadosRotulo">nota final</p>
+                        <p className="dadosRotulo">prof.</p>
+                        <p className="dadosRotulo">N1</p>
+                        <p className="dadosRotulo">N2</p>
+                        <p className="dadosRotulo">N3</p>
+                        <p className="dadosRotulo">N4</p>
+                        <p className="dadosRotulo">MF</p>
                     </div>
                     {
                         ranking.map((p)=>{
@@ -402,9 +473,12 @@ function Dados(){
                                 <div className="dados-ranking" key={p.chave}>
                                     <p>{p.turma}</p>
                                     <p>{p.nome}</p>
-                                    <p>{parseFloat(p.nota_professor).toFixed(3)}</p>
-                                    <p>{parseFloat(p.nota_avaliador).toFixed(3)}</p>
-                                    <p>{((p.nota_avaliador + p.nota_professor)/2).toFixed(3)}</p>
+                                    <p>{p.nota_professor!==0 ? parseFloat(p.nota_professor).toFixed(3):'-'}</p>
+                                    <p>{p.n1!==0 ? parseFloat(p.n1).toFixed(3):'-'}</p>
+                                    <p>{p.n2!==0 ? parseFloat(p.n2).toFixed(3):'-'}</p>
+                                    <p>{p.n3!==0 ? parseFloat(p.n3).toFixed(3):'-'}</p>
+                                    <p>{p.n4!==0 ? parseFloat(p.n4).toFixed(3):'-'}</p>
+                                    <b><p>{(p.nota_final).toFixed(3)}</p></b>
                                 </div>
                             )
                         })

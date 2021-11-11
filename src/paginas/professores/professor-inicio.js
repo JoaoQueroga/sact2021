@@ -34,6 +34,18 @@ function ProfessorInicio(props){
        })
     }
 
+    function irProjetosAvaliacao(){
+        history.push({
+            pathname: `/professor-projetos-avaliacao`,
+            state: {
+                chave:  props.location.state.chave,
+                nome:  props.location.state.nome,
+                curso:  props.location.state.curso,
+                qtd_avaliacoes: props.location.state.qtd_avaliacoes
+            }
+       })
+    }
+
 
     return(
         <div className="professor-inicio">
@@ -45,7 +57,7 @@ function ProfessorInicio(props){
 
             <div className="professor-inicio-main">
                 <button onClick={irProjetos}>projetos</button>
-                <button>avaliação</button>
+                <button onClick={irProjetosAvaliacao}>avaliação</button>
             </div>
 
             <div className="professor-inicio-rodape">

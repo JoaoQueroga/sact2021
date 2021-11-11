@@ -56,7 +56,7 @@
 }
 
 .dados-projetosAvaliados p{
-    font-size: 20px;
+    font-size: 15px;
     margin: 0;
     padding: 0px 0px 0px 10px;
     text-align: left;
@@ -72,8 +72,37 @@
     margin-top: 0px;
 }
 
+#info-rot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#info-rot button{
+    background-color: #d5f719;
+    border: none;
+    border-radius: 10px;
+}
+#info-rot button:hover{
+    background-color: #92a817;
+}
+#info-proj{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#det{
+    background-color: #4222DB;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#det:hover{
+    background-color: #341bb3;
+}
+
 .dados-avaliadores p{
-    font-size: 20px;
+    font-size: 15px;
     margin: 0;
     padding: 0px 0px 0px 10px;
     text-align: left;
@@ -82,14 +111,14 @@
 
 .dados-avaliacoes{
     display: grid;
-    grid-template-columns: 30% 30% 10% 20% 10%;
+    grid-template-columns: 30% 30% 8% 26% 8%;
     width: 90%;
     background-color: #73cef5;
     border-bottom: 1px solid  #faf9dc;
 }
 
 .dados-avaliacoes p{
-    font-size: 20px;
+    font-size: 15px;
     margin: 0;
     padding: 0px 0px 0px 10px;
     text-align: left;
@@ -98,14 +127,14 @@
 
 .dados-ranking{
     display: grid;
-    grid-template-columns: 10% 45% 15% 15% 15%;
+    grid-template-columns: 5% 35% 10% 10% 10% 10% 10% 10%;
     width: 90%;
     background-color: #73cef5;
     border-bottom: 1px solid  #faf9dc;
 }
 
 .dados-ranking p{
-    font-size: 20px;
+    font-size: 15px;
     margin: 0;
     padding: 0px 0px 0px 10px;
     text-align: left;

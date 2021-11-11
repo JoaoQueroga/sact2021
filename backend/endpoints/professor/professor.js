@@ -74,4 +74,19 @@ professor.get('/excluir/:chave', (req, res)=>{
     executaSql(query, res);
 })
 
+//busca projetos por professor
+professor.get('/projetos/:professor', (req, res)=>{
+    let professor = req.params.professor;
+    let query = `SELECT * FROM sact2021.projetos WHERE (professor = '${professor}')`;
+    executaSql(query, res);
+})
+
+//professor avaliar projeto
+professor.post('/avaliar', (req, res)=>{
+    let chave = req.body.chave;
+    let nota = req.body.nota;
+    let update = `UPDATE sact2021.projetos SET nota_professor = '${nota}' WHERE (chave = '${chave}')`;
+    executaSql(update, res);
+})
+
 module.exports = professor;

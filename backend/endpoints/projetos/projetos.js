@@ -39,6 +39,13 @@ projetos.post('/atualizaChave', (req, res)=>{
     executaSql(update, res);
 })
 
+//busca projeto por chave
+projetos.get('/buscar/:chave', (req, res)=>{
+    let chave = req.params.chave;
+    let query = `SELECT * FROM sact2021.projetos WHERE (chave = '${chave}')`;
+    executaSql(query, res);
+})
+
 
 //lista todos projetos
 projetos.get('/todos', (req, res)=>{
@@ -52,9 +59,9 @@ projetos.get('/avaliacoes-realizadas', (req, res)=>{
     executaSql(query, res);
 })
 
-//projetos ordenados por qtd avaliacoes
+//projetos ordenados por avaliacao
 projetos.get('/ranking-geral', (req, res)=>{
-    let query = `SELECT * FROM sact2021.projetos ORDER BY (nota_avaliador + nota_professor) DESC`;
+    let query = `SELECT * FROM sact2021.projetos ORDER BY nota_final DESC`;
     executaSql(query, res);
 })
 
@@ -79,8 +86,7 @@ projetos.post('/cadastra-projeto', (req, res)=>{
     let professor = req.body.professor;
     let curso = req.body.curso;
 
-
-    let query = `INSERT INTO sact2021.projetos (chave, nome, turma, curso, descricao, aluno1, aluno2, aluno3, aluno4, professor, nota_professor, nota_avaliador, qtd_avaliacoes, nota_acumulada) VALUES ('${chave}','${nome}', '${turma}', '${curso}', '${descricao}','${aluno1}','${aluno2}','${aluno3}','${aluno4}','${professor}','0','0','0','0')`;
+    let query = `INSERT INTO sact2021.projetos (chave, nome, turma, curso, descricao, aluno1, aluno2, aluno3, aluno4, professor, nota_professor, n1, n2, n3, n4, qtd_avaliacoes, nota_final) VALUES ('${chave}','${nome}', '${turma}', '${curso}', '${descricao}','${aluno1}','${aluno2}','${aluno3}','${aluno4}','${professor}','0','0','0','0','0','0','0')`;
     executaSql(query, res);
 })
 
