@@ -22,6 +22,7 @@ CREATE TABLE IF NOT EXISTS `sact2021`.`avaliador` (
   `nome` VARCHAR(45) NULL,
   `instituicao` VARCHAR(50) NULL,
   `projetos_avaliados` INT NULL,
+  `pode_avaliar` VARCHAR(4) NULL,
   PRIMARY KEY (`chave`));
 
 

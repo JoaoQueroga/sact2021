@@ -57,7 +57,8 @@ avaliador.post('/cadastra-avaliador', (req, res)=>{
     let chave = parseInt(req.body.chave);
     let nome = req.body.nome;
     let inst = req.body.instituicao;
-    let query = `INSERT INTO sact2021.avaliador (chave, nome, instituicao, projetos_avaliados) VALUES ('${chave}','${nome}', '${inst}', '0')`;
+    let podeAvaliar = req.body.pode_avaliar;
+    let query = `INSERT INTO sact2021.avaliador (chave, nome, instituicao, projetos_avaliados, pode_avaliar) VALUES ('${chave}','${nome}', '${inst}', '0', '${podeAvaliar}')`;
     executaSql(query, res);
 })
 

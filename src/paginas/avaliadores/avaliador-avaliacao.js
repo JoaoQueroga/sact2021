@@ -24,6 +24,7 @@ function AvaliadorAvaliacao(props){
     const [projetosAvaliados, setAvaliados] = useState(0);
     const[nome, setNome] = useState('');
     const[instituicao, setInstituicao] = useState('');
+    const[podeAvaliar, setPodeAvaliar] = useState('');
 
     //projeto
     const [projeto, setProjeto] = useState({});
@@ -47,6 +48,7 @@ function AvaliadorAvaliacao(props){
         setAvaliados(props.location.state.projetos_avaliados);
         setNome(props.location.state.nome);
         setInstituicao(props.location.state.instituicao);
+        setPodeAvaliar(props.location.state.pode_avaliar);
 
         api.get(`avaliacao/select-projeto/${props.location.state.codigo_projeto}`).then((res)=>{
             if(res.data.length > 0){
@@ -161,7 +163,8 @@ function AvaliadorAvaliacao(props){
                                         chave:  chave,
                                         nome:  nome,
                                         instituicao:  instituicao,
-                                        projetos_avaliados: (projetosAvaliados + 1)
+                                        projetos_avaliados: (projetosAvaliados + 1),
+                                        pode_avaliar: podeAvaliar
                                     }
                                 });
                             })
@@ -179,7 +182,8 @@ function AvaliadorAvaliacao(props){
                                 chave:  chave,
                                 nome:  nome,
                                 instituicao:  instituicao,
-                                projetos_avaliados: projetosAvaliados
+                                projetos_avaliados: projetosAvaliados,
+                                pode_avaliar: podeAvaliar
                             }
                         });
                     })
@@ -245,7 +249,8 @@ function AvaliadorAvaliacao(props){
                         chave:  chave,
                         nome:  nome,
                         instituicao:  instituicao,
-                        projetos_avaliados: projetosAvaliados
+                        projetos_avaliados: projetosAvaliados,
+                        pode_avaliar: podeAvaliar
                     }}
                 }>sair</Link>
             </div>

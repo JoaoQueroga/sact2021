@@ -7,7 +7,7 @@ import api from '../../configs/api';
 
 function AvaliadorSelProjeto(props){
     
-    const qtd_max_avaliacoes = 4;
+    const qtd_max_avaliacoes = 3;
 
     const history = useHistory();
     const [codigo, setCodigo] = useState('');
@@ -17,6 +17,7 @@ function AvaliadorSelProjeto(props){
     const [projetosAvaliados, setAvaliados] = useState(0);
     const[nome, setNome] = useState('');
     const[instituicao, setInstituicao] = useState('');
+    const[podeAvaliar, setPodeAvaliar] = useState('');
 
     /*function handleScan(data) {
         if (data) {
@@ -32,47 +33,64 @@ function AvaliadorSelProjeto(props){
         setAvaliados(props.location.state.projetos_avaliados);
         setNome(props.location.state.nome);
         setInstituicao(props.location.state.instituicao);
+        setPodeAvaliar(props.location.state.pode_avaliar);
     },[])
 
     function avaliar(){
         if(codigo){
-
-           
-
             api.get(`avaliacao/select-projeto/${codigo}`).then((res)=>{
                 if(res.data.length > 0){
-                    api.get(`avaliacao/cont-avaliacoes/${codigo}`).then((response)=>{
-                        if(response.data[0].cont < qtd_max_avaliacoes){
-                            Swal.fire({
-                                title: res.data[0].nome,
-                                text: 'este é o projeto?',
-                                icon: 'question',
-                                confirmButtonText: 'avaliar',
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                  history.push({ 
-                                        pathname:'/avaliacao',
-                                        state: {
-                                            chave:  chave,
-                                            nome:  nome,
-                                            instituicao:  instituicao,
-                                            projetos_avaliados: projetosAvaliados,
-                                            codigo_projeto: codigo
-                                        }
-                                    });
-                                }
-                            })
-                        }else{
-                            Swal.fire({
-                                title: 'Finalizado',
-                                text: 'Este projeto já recebeu o máximo de avaliações',
-                                icon: 'warning',
-                                confirmButtonText: 'ok',
-                            })
-                        }
-                    })
-
-                   
+                    let pode = false;
+                    if(res.data[0].curso === 'info' && (podeAvaliar === '100' || podeAvaliar === '110' || podeAvaliar === '101' || podeAvaliar === '111')){
+                        pode = true;
+                    }
+                    if(res.data[0].curso === 'eletro' && (podeAvaliar === '010' || podeAvaliar === '110' || podeAvaliar === '011' || podeAvaliar === '111')){
+                        pode = true;
+                    }
+                    if(res.data[0].curso === 'meca' && (podeAvaliar === '001' || podeAvaliar === '101' || podeAvaliar === '011' || podeAvaliar === '111')){
+                        pode = true;
+                    }
+                    if(!pode){
+                        setCodigo('');
+                        Swal.fire({
+                            title: res.data[0].nome,
+                            text: 'não pode ser avaliado, encontre os projetos da sua área',
+                            icon: 'error',
+                            confirmButtonText: 'ok',
+                        })
+                    }else{
+                        api.get(`avaliacao/cont-avaliacoes/${codigo}`).then((response)=>{
+                            if(response.data[0].cont < qtd_max_avaliacoes){
+                                Swal.fire({
+                                    title: res.data[0].nome,
+                                    text: 'este é o projeto?',
+                                    icon: 'question',
+                                    confirmButtonText: 'avaliar',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                    history.push({ 
+                                            pathname:'/avaliacao',
+                                            state: {
+                                                chave:  chave,
+                                                nome:  nome,
+                                                instituicao:  instituicao,
+                                                projetos_avaliados: projetosAvaliados,
+                                                pode_avaliar: podeAvaliar,
+                                                codigo_projeto: codigo
+                                            }
+                                        });
+                                    }
+                                })
+                            }else{
+                                Swal.fire({
+                                    title: 'Finalizado',
+                                    text: 'Este projeto já recebeu o máximo de avaliações',
+                                    icon: 'warning',
+                                    confirmButtonText: 'ok',
+                                })
+                            }
+                        })
+                    }
                 }else{
                     Swal.fire({
                         title: 'Projeto não encontrado',
@@ -125,7 +143,8 @@ function AvaliadorSelProjeto(props){
                         chave:  chave,
                         nome:  nome,
                         instituicao:  instituicao,
-                        projetos_avaliados: projetosAvaliados
+                        projetos_avaliados: projetosAvaliados,
+                        pode_avaliar: podeAvaliar
                     }}
                 }>voltar</Link>
             </div>

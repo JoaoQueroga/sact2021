@@ -14,7 +14,7 @@ export const getToken = () =>{
     return localStorage.getItem(TOKEN_KEY);
 };
 
-export const login =(token) => { 
+export const login = (token) => { 
     localStorage.setItem(TOKEN_KEY, token);
 };
 

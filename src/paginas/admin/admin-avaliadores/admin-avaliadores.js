@@ -79,7 +79,17 @@ function AdmAvaliadores(){
                                     <p>{av.instituicao}</p>
                                 </div>
                                 <div className="statusAvaliador">
-                                    <p>{av.projetos_avaliados} avaliações</p>
+                                    <p>{
+
+                                    av.pode_avaliar === '100' ? "informática" :
+                                    av.pode_avaliar === '010' ? "eletrônica" :
+                                    av.pode_avaliar === '001' ? "mecatrônica" :
+                                    av.pode_avaliar === '110' ? "informática e eletrônica" :
+                                    av.pode_avaliar === '101' ? "informática e mecatrônica" :
+                                    av.pode_avaliar === '011' ? "eletrônica e mecatrônica" :
+                                    "todos os cursos"
+                                    
+                                    }</p>
                                 </div>
                             
                             </div>

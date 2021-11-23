@@ -85,3 +85,17 @@
     background-color:  #341bb3;
 }
 
+.podeAv{
+    border: 2px solid #73cef5;
+    margin-top: 0px;
+    width: 80%;
+}
+
+.podeAv p{
+    background-color: #73cef5;
+    margin: 0px;
+}
+.podeAv h3{
+    margin: 0px;
+}
+

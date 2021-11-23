@@ -30,7 +30,8 @@ function AvaliadorLogin(){
                                  chave:  res.data.user.chave,
                                  nome:  res.data.user.nome,
                                  instituicao:  res.data.user.instituicao,
-                                 projetos_avaliados: res.data.user.projetos_avaliados
+                                 projetos_avaliados: res.data.user.projetos_avaliados,
+                                 pode_avaliar: res.data.user.pode_avaliar
                                 }
                         })
                     })

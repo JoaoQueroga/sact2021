@@ -25,6 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    border: none !important;
 }
 
 .btCancelar{
@@ -73,3 +74,24 @@
     border: 1px solid #73cef5;
     border-radius: 8px;
 }
+
+.podeAvaliar{
+    height: 40px;
+}
+.podeAvaliar div{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   flex-direction: column;
+   border: none !important;
+}
+
+.podeAvaliar label{
+   margin-left: 0px;
+   font-size: 15px;
+   text-transform: uppercase;
+}
+.podeAvaliar input{
+    margin-right: 0px;
+    background-color: blue;
+ }

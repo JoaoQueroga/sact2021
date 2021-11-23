@@ -62,7 +62,7 @@ function AdmLogin(){
             </div>
             <div className="mainAdm">
                 
-                <input type="text" value={chave} onChange={(e)=>setChave(e.target.value)} placeholder="admin"/>
+                <input type="password" value={chave} onChange={(e)=>setChave(e.target.value)} placeholder="admin"/>
                 <label>informe a sua chave</label>
                 <button onClick={logirAdm}>entrar</button>
             </div>
