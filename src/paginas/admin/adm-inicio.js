@@ -59,7 +59,7 @@ function AdmInicio(){
                 }}>projetos</Link>
                 <Link to="/admin-professores">professores</Link>
                 <Link to="/admin-criteriosCursos">critérios</Link>
-                <Link to="#">relatórios</Link>
+                <Link to="/adm-relatorios">relatórios</Link>
                 <Link to="/adm-dados/1">dados</Link>
             </div>
             <div className="admInicioRodape">

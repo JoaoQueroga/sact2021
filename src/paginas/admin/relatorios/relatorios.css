@@ -1,0 +1,72 @@
+.relatorios{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.relatorios-opcoes {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.relatorios-opcoes button{
+    margin-top: 10px;
+    background-color: #4222DB;
+    width: 400px;
+    color: #faf9dc;
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+    font-size: 20px;
+}
+
+.relatorios-opcoes button:hover{
+    background-color: #341bb3;
+}
+
+#bt-re-voltar{
+    margin-top: 10px;
+    background-color: rgb(148, 36, 36);;
+    width: 400px;
+    color: #faf9dc;
+    border-radius: 5px;
+    padding: 8px;
+    border: none;
+    font-size: 20px;
+}
+#bt-re-voltar:hover{
+    background-color: rgb(92, 24, 24);;
+}
+
+.relatorios-opcoes-chave{
+    width: 100%;
+    height: 100vh;
+}
+.relatorios-opcoes-chave ol{
+    text-align: left;
+}
+
+.relatorios-chaves{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.relatorios-chaves p{
+    font-size: 2em;
+}
+
+
+
+#chaveNumber{
+   
+    font-size: 6em ;
+}

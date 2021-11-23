@@ -38,6 +38,9 @@ import CriterioCadastro from './paginas/admin/admin-criterios/adm-criterioCadast
 
 import Dados from './paginas/admin/admin-dados/dados';
 
+import Relatorios from './paginas/admin/relatorios/relatorios';
+import RelatoriosChaves from './paginas/admin/relatorios/chaves-projetos';
+
 import NaoAuth from './paginas/naoAuth';
 import NaoExiste from './paginas/naoEncontrada';
 
@@ -108,6 +111,8 @@ function Rotas(){
                 <PrivateRoute exact path="/admin-criteriosCursos" component={ CriteriosCurso } />
                 <PrivateRoute exact path="/admin-criterioCadastro/:curso" component={ CriterioCadastro } />
                 <PrivateRoute exact path="/adm-dados/:op" component={ Dados } />
+                <PrivateRoute exact path="/adm-relatorios" component={ Relatorios } />
+                <PrivateRoute exact path="/adm-relatorios-chaves" component={ RelatoriosChaves } />
             
 
                 <Route exact path="/naoauth">
