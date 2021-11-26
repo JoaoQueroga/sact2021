@@ -4,15 +4,21 @@ const conexao = require('../../mysqlConnect');
 
 const contador = 27; // incremento na chave
 
-function executaSql(query, res){ // executa a query e responde
-    conexao.query(query, function(error, results){
+function executaSql(query, dados , res){ // executa a query e responde
+    conexao.query(query, dados ,function(error, results){
         if(error){ 
-            console.log(error);
             res.json(error);
+            console.log(error);
         }else{
             res.json(results);
         }
     });
+}
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function pegaChave(res){
@@ -21,7 +27,8 @@ function pegaChave(res){
         if(error){ 
             console.log(error);
         }else{
-            let chave = parseInt(results[0].chave_projeto) + contador;
+            let chave = parseInt(results[0].chave_projeto) + getRandomInt(1,50);
+            console.log("chave de projeto gerada: " + chave);
             res.json({"chave":chave});
         }
     });
@@ -32,44 +39,48 @@ function pegaChave(res){
 projetos.get('/pegaChave', (req, res)=>{
     pegaChave(res);
 })
+
 //depois de salvar atualiza a chave no banco
 projetos.post('/atualizaChave', (req, res)=>{
-    let novaChave = req.body.novaChave;
-    let update = `UPDATE sact2021.chaves SET chave_projeto = '${novaChave}' WHERE (id = '1')`;
-    executaSql(update, res);
+    let dados = [req.body.novaChave];
+    let update = `UPDATE sact2021.chaves SET chave_projeto = ? WHERE (id = '1')`;
+    executaSql(update,dados, res);
 })
 
 //busca projeto por chave
 projetos.get('/buscar/:chave', (req, res)=>{
-    let chave = req.params.chave;
-    let query = `SELECT * FROM sact2021.projetos WHERE (chave = '${chave}')`;
-    executaSql(query, res);
+    let dados = [req.params.chave];
+    let query = `SELECT * FROM sact2021.projetos WHERE (chave = ?)`;
+    executaSql(query,dados, res);
 })
 
 
 //lista todos projetos
 projetos.get('/todos', (req, res)=>{
     let query = `SELECT * FROM sact2021.projetos`;
-    executaSql(query, res);
+    let dados = [];
+    executaSql(query, dados,res);
 })
 
 //projetos ordenados por qtd avaliacoes
 projetos.get('/avaliacoes-realizadas', (req, res)=>{
     let query = `SELECT * FROM sact2021.projetos ORDER BY qtd_avaliacoes DESC`;
-    executaSql(query, res);
+    let dados = [];
+    executaSql(query, dados,res);
 })
 
 //projetos ordenados por avaliacao
 projetos.get('/ranking-geral', (req, res)=>{
     let query = `SELECT * FROM sact2021.projetos ORDER BY nota_final DESC`;
-    executaSql(query, res);
+    let dados = [];
+    executaSql(query, dados,res);
 })
 
 //lista todos projetos de um curso  // info | eletro | meca
 projetos.get('/todos/:curso', (req, res)=>{
-    let curso = req.params.curso;
-    let query = `SELECT * FROM sact2021.projetos WHERE (curso = '${curso}')`;
-    executaSql(query, res);
+    let query = `SELECT * FROM sact2021.projetos WHERE (curso = ?)`;
+    let dados = [req.params.curso];
+    executaSql(query, dados,res);
 })
 
 
@@ -86,28 +97,30 @@ projetos.post('/cadastra-projeto', (req, res)=>{
     let professor = req.body.professor;
     let curso = req.body.curso;
 
-    let query = `INSERT INTO sact2021.projetos (chave, nome, turma, curso, descricao, aluno1, aluno2, aluno3, aluno4, professor, nota_professor, n1, n2, n3, n4, qtd_avaliacoes, nota_final) VALUES ('${chave}','${nome}', '${turma}', '${curso}', '${descricao}','${aluno1}','${aluno2}','${aluno3}','${aluno4}','${professor}','0','0','0','0','0','0','0')`;
-    executaSql(query, res);
+    let query = "INSERT INTO sact2021.projetos (chave, nome, turma, curso, descricao, aluno1, aluno2, aluno3, aluno4, professor, nota_professor) VALUES (?,?,?,?,?,?,?,?,?,?,'0')";
+    let dados = [chave, nome, turma, curso, descricao, aluno1, aluno2, aluno3, aluno4, professor];
+    executaSql(query, dados,res);
 })
 
 //retorna quantidade de projetos cadastrados
 projetos.get('/cont', (req, res)=>{
     let query = `SELECT COUNT(*) AS cont FROM sact2021.projetos`;
-    executaSql(query, res);
+    let dados = [];
+    executaSql(query, dados,res);
 })
 
 //contagem de projetos por curso
 projetos.get('/cont/:curso', (req, res)=>{
-    let curso = req.params.curso;
-    let query = `SELECT COUNT(*) AS cont FROM sact2021.projetos WHERE (curso = '${curso}')`;
-    executaSql(query, res);
+    let query = `SELECT COUNT(*) AS cont FROM sact2021.projetos WHERE (curso = ?)`;
+    let dados = [req.params.curso];
+    executaSql(query, dados,res);
 })
 
 //excluir projetos
 projetos.get('/excluir/:chave', (req, res)=>{
-    let chave = req.params.chave;
-    let query = `DELETE FROM sact2021.projetos WHERE (chave = '${chave}')`;
-    executaSql(query, res);
+    let query = `DELETE FROM sact2021.projetos WHERE (chave = ?)`;
+    let dados = [req.params.chave];
+    executaSql(query, dados,res);
 })
 
 module.exports = projetos;

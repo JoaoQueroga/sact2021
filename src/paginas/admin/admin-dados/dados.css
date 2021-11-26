@@ -127,7 +127,7 @@
 
 .dados-ranking{
     display: grid;
-    grid-template-columns: 8% 42% 8% 8% 8% 8% 8% 10%;
+    grid-template-columns: 8% 50% 8% 8% 8% 8% 10%;
     width: 90%;
     background-color: #73cef5;
     border-bottom: 1px solid  #faf9dc;
@@ -256,14 +256,20 @@
 }
 
 .rkCurso1{
+    font-size: 15px !important;
+    text-transform: uppercase;
     border-left: 30px solid #ffd700;
     border-right: 30px solid #ffd700;
 }
 .rkCurso2{
+    font-size: 15px !important;
+    text-transform: uppercase;
     border-left:30px solid #c0c0c0;
     border-right:30px solid #c0c0c0;
 }
 .rkCurso3{
+    font-size: 15px !important;
+    text-transform: uppercase;
     border-left:30px solid #cd7f32;
     border-right:30px solid #cd7f32;
 }

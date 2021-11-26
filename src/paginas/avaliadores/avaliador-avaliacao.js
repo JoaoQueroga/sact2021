@@ -111,7 +111,20 @@ function AvaliadorAvaliacao(props){
                         icon: 'success',
                         confirmButtonText: 'ok',
                     }).then(() => {
+                       
+                        history.push({
+                            pathname: '/avaliador-inicio',
+                            state: {
+                                chave:  chave,
+                                nome:  nome,
+                                instituicao:  instituicao,
+                                projetos_avaliados: (projetosAvaliados + 1),
+                                pode_avaliar: podeAvaliar
+                            }
+                        });
+                
                         //local da avaliacao
+                        /*
                         let dados = {};
                         if(projeto.qtd_avaliacoes === 0){
                             dados = {
@@ -169,6 +182,7 @@ function AvaliadorAvaliacao(props){
                                 });
                             })
                         })
+                        */
                     })
                 }).catch(()=>{
                     Swal.fire({

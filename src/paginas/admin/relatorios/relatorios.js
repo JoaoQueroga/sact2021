@@ -11,6 +11,10 @@ function Relatorios(){
     function chaves(){
         history.push('/adm-relatorios-chaves');
     }
+    function avaliadores(){
+        history.push('/adm-relatorios-avaliadores');
+    }
+
 
     return(
         <div className="relatorios">
@@ -20,7 +24,7 @@ function Relatorios(){
 
                 <button id="bt-re-voltar" onClick={voltar}> voltar </button>
                 <button onClick={chaves}> chaves dos projetos</button>
-                <button> chaves dos avaliadores</button>
+                <button onClick={avaliadores}> chaves dos avaliadores</button>
 
             </div>
         </div>

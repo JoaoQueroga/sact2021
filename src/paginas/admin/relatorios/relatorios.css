@@ -6,6 +6,14 @@
     flex-direction: column;
 }
 
+.relGeral{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .relatorios-opcoes {
     width: 80%;
     display: flex;
@@ -62,11 +70,45 @@
 
 .relatorios-chaves p{
     font-size: 2em;
+    margin: 0;
+}
+
+#chaveNome{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#chaveNumber{
+    font-size: 6em ;
 }
 
 
+.relatorios-avs{
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-auto-rows: 50vh;
+}
 
-#chaveNumber{
-   
-    font-size: 6em ;
+
+.slotAva{
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#nomeAv{
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.slotAva p{
+    margin: 0px;
+}
+.slotAva h2{
+    margin: 0px;
+}
+
+.infoAv{
+    font-size: 15px;
 }

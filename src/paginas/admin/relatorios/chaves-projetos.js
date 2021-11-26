@@ -37,7 +37,8 @@ function RelatoriosChaves(){
                 projetos.map((p)=>{
                     return(
                         <div className="relatorios-chaves" key={p.chave}>
-                            <p>{p.nome}</p>
+                            <p id="chaveNome">{p.nome}</p>
+                            <p>{p.turma}</p>
                             <h1 id="chaveNumber">{p.chave}</h1>
                             <p>(&nbsp;&nbsp;&nbsp;&nbsp;) finalizado</p>
                         </div>

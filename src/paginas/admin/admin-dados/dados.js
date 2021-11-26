@@ -47,12 +47,28 @@ function Dados(){
     const [rkMeca2, setRkMeca2] = useState("");
     const [rkMeca3, setRkMeca3] = useState("");
 
-    useEffect(()=>{
-        api.get('projetos/avaliacoes-realizadas').then((res)=>{
-           setProjetos(res.data);
-           porcentagemProjetos(res.data);
-           contagemProjetosAvaliados(res.data);
+    
+
+    async function getRanking(){
+        await api.get('avaliacao/ranking').then((res)=>{
+        
+            res.data.sort(function compare(a, b) { // ordena o raking
+                if (a.media > b.media) return -1;
+                if (a.media < b.media) return 1;
+                return 0;
+            })
+            
+            setRanking(res.data);
+
+            setProjetos(res.data);
+
+            contagemProjetosAvaliados(res.data);
+            porcentagemProjetos(res.data);
+            defineRaking(res.data);
         })
+    }
+
+    useEffect(()=>{
         api.get('avaliador/avaliacoes-realizadas').then((res)=>{
             setAvaliadores(res.data);
             porcentagemAvaliadores(res.data);
@@ -60,10 +76,9 @@ function Dados(){
         api.get('avaliacao/avaliacoes-log').then((res)=>{
             setAvaliacoes(res.data);
         })
-        api.get('projetos/ranking-geral').then((res)=>{
-            setRanking(res.data);
-            defineRaking(res.data);
-        })
+
+        getRanking();
+        
     },[])
 
 
@@ -71,15 +86,15 @@ function Dados(){
         setQtdProjs(dados.length);
         let cont = 0;
         dados.forEach(p => {
-            if(p.qtd_avaliacoes > 0){
+            if(p.qtd_avaliacoes > 1){
                cont++;
-               
             }
         });
         setQtdProjsAv(cont);
         let porc = ((cont*100)/dados.length).toFixed(1);
         setPorcProjsAv(porc);
     }
+
     function porcentagemAvaliadores(dados){
         setQtdAvs(dados.length);
         let cont = 0;
@@ -99,17 +114,15 @@ function Dados(){
 
     function defineRaking(dados){
 
-        console.log(dados);
-
         if(dados.length >= 3){
-            setRk1(dados[0].nome);
-            setRk2(dados[1].nome);
-            setRk3(dados[2].nome);
+            setRk1(dados[0].projeto);
+            setRk2(dados[1].projeto);
+            setRk3(dados[2].projeto);
         }else if(dados.length === 2){
-            setRk1(dados[0].nome);
-            setRk2(dados[1].nome);
+            setRk1(dados[0].projeto);
+            setRk2(dados[1].projeto);
         }else if(dados.length === 1){
-            setRk1(dados[0].nome);
+            setRk1(dados[0].projeto);
         }
 
         //raking por curso
@@ -127,34 +140,34 @@ function Dados(){
             }
         })
         if(info.length >= 3){
-            setRkInfo1(info[0].nome);
-            setRkInfo2(info[1].nome);
-            setRkInfo3(info[2].nome);
+            setRkInfo1(info[0].projeto);
+            setRkInfo2(info[1].projeto);
+            setRkInfo3(info[2].projeto);
         }else if(info.length === 2){
-            setRkInfo1(info[0].nome);
-            setRkInfo2(info[1].nome);
+            setRkInfo1(info[0].projeto);
+            setRkInfo2(info[1].projeto);
         }else if(info.length === 1){
-            setRkInfo1(info[0].nome);
+            setRkInfo1(info[0].projeto);
         }
         if(eletro.length >= 3){
-            setRkEletro1(eletro[0].nome);
-            setRkEletro2(eletro[1].nome);
-            setRkEletro3(eletro[2].nome);
+            setRkEletro1(eletro[0].projeto);
+            setRkEletro2(eletro[1].projeto);
+            setRkEletro3(eletro[2].projeto);
         }else if(eletro.length === 2){
-            setRkEletro1(eletro[0].nome);
-            setRkEletro2(eletro[1].nome);
+            setRkEletro1(eletro[0].projeto);
+            setRkEletro2(eletro[1].projeto);
         }else if(eletro.length === 1){
-            setRkEletro1(eletro[0].nome);
+            setRkEletro1(eletro[0].projeto);
         }
         if(meca.length >= 3){
-            setRkMeca1(meca[0].nome);
-            setRkMeca2(meca[1].nome);
-            setRkMeca3(meca[2].nome);
+            setRkMeca1(meca[0].projeto);
+            setRkMeca2(meca[1].projeto);
+            setRkMeca3(meca[2].projeto);
         }else if(meca.length === 2){
-            setRkMeca1(meca[0].nome);
-            setRkMeca2(meca[1].nome);
+            setRkMeca1(meca[0].projeto);
+            setRkMeca2(meca[1].projeto);
         }else if(meca.length === 1){
-            setRkMeca1(meca[0].nome);
+            setRkMeca1(meca[0].projeto);
         }
     }
         
@@ -323,27 +336,27 @@ function Dados(){
                             <div className="dl2">
                                 <h2>{qt0}%</h2>
                                 
-                                <p>0 avaliaçoes</p>
+                                <p>sem avaliações</p>
                             </div>
                             <div className="dl2">
                                 <h2>{qt1}%</h2>
                                 
-                                <p>1 avaliaçoes</p>
+                                <p>só o professor</p>
                             </div>
                             <div className="dl2">
                                 <h2>{qt2}%</h2>
                                
-                                <p>2 avaliaçoes</p>
+                                <p>1ª avaliaçoes</p>
                             </div>
                             <div className="dl2">
                                 <h2>{qt3}%</h2>
                                 
-                                <p>3 avaliaçoes</p>
+                                <p>2ª avaliaçoes</p>
                             </div>
                             <div className="dl2">
                                 <h2>{qt4}%</h2>
                                
-                                <p>4 avaliaçoes</p>
+                                <p>3ª avaliaçoes</p>
                             </div>
                         </div>
                         <div className="l3">
@@ -400,11 +413,11 @@ function Dados(){
                             return(
                                 <div className="dados-projetosAvaliados" key={p.chave} 
                                 style={p.qtd_avaliacoes >= 4 ? {"background":" #28ac49"}: 
-                                p.qtd_avaliacoes === 0 ? {"background":"#ec601f"}:{"background":" #65fa0f"}}
+                                p.qtd_avaliacoes === 1 ? {"background":"#ec601f"}:{"background":" #65fa0f"}}
                                 >
-                                    <p>{p.nome}</p>
+                                    <p>{p.projeto}</p>
                                     <p>{p.turma}</p>
-                                    <div id="info-proj"><p>{p.qtd_avaliacoes}</p><button id="det" onClick={()=>dequem(p.chave, p.nome)}>de quem?</button></div>
+                                    <div id="info-proj"><p>{p.qtd_avaliacoes-1}</p><button id="det" onClick={()=>dequem(p.chave, p.nome)}>de quem?</button></div>
                                 </div>
                             )
                         })
@@ -464,7 +477,6 @@ function Dados(){
                         <p className="dadosRotulo">N1</p>
                         <p className="dadosRotulo">N2</p>
                         <p className="dadosRotulo">N3</p>
-                        <p className="dadosRotulo">N4</p>
                         <p className="dadosRotulo">MF</p>
                     </div>
                     {
@@ -472,13 +484,12 @@ function Dados(){
                             return(
                                 <div className="dados-ranking" key={p.chave}>
                                     <p>{p.turma}</p>
-                                    <p>{p.nome}</p>
-                                    <p>{(p.nota_professor)}</p>
-                                    <p>{p.n1!==0 ? parseFloat(p.n1):'-'}</p>
-                                    <p>{p.n2!==0 ? parseFloat(p.n2):'-'}</p>
-                                    <p>{p.n3!==0 ? parseFloat(p.n3):'-'}</p>
-                                    <p>{p.n4!==0 ? parseFloat(p.n4):'-'}</p>
-                                    <b><p>{(p.nota_final).toFixed(3)}</p></b>
+                                    <p>{p.projeto}</p>
+                                    <p>{(p.notas[0])}</p>
+                                    <p>{p.notas[1] ? parseFloat(p.notas[1]):'-'}</p>
+                                    <p>{p.notas[2] ? parseFloat(p.notas[2]):'-'}</p>
+                                    <p>{p.notas[3] ? parseFloat(p.notas[3]):'-'}</p>
+                                    <b><p>{(p.media).toFixed(2)}</p></b>
                                 </div>
                             )
                         })

@@ -59,8 +59,8 @@ function AvaliadorSelProjeto(props){
                             confirmButtonText: 'ok',
                         })
                     }else{
-                        api.get(`avaliacao/cont-avaliacoes/${codigo}`).then((response)=>{
-                            if(response.data[0].cont < qtd_max_avaliacoes){
+                        api.get(`avaliacao/projeto/${codigo}`).then((response)=>{
+                            if(response.data.length < qtd_max_avaliacoes){
                                 Swal.fire({
                                     title: res.data[0].nome,
                                     text: 'este é o projeto?',

@@ -40,6 +40,7 @@ import Dados from './paginas/admin/admin-dados/dados';
 
 import Relatorios from './paginas/admin/relatorios/relatorios';
 import RelatoriosChaves from './paginas/admin/relatorios/chaves-projetos';
+import ChavesAvaliadores from './paginas/admin/relatorios/chaves-avaliadores';
 
 import NaoAuth from './paginas/naoAuth';
 import NaoExiste from './paginas/naoEncontrada';
@@ -113,6 +114,7 @@ function Rotas(){
                 <PrivateRoute exact path="/adm-dados/:op" component={ Dados } />
                 <PrivateRoute exact path="/adm-relatorios" component={ Relatorios } />
                 <PrivateRoute exact path="/adm-relatorios-chaves" component={ RelatoriosChaves } />
+                <PrivateRoute exact path="/adm-relatorios-avaliadores" component={ ChavesAvaliadores } />
             
 
                 <Route exact path="/naoauth">

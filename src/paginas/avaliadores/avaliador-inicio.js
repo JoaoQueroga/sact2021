@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react';
 import {Link, useHistory} from 'react-router-dom';
 import './avaliador.css';
+import api from  '../../configs/api';
 
 function AvaliadorInicio(props){
     const history = useHistory();
@@ -22,7 +23,7 @@ function AvaliadorInicio(props){
                 instituicao:  instituicao,
                 projetos_avaliados: projetosAvaliados,
                 pode_avaliar: podeAvaliar
-               }
+            }
         });
     }
 
@@ -53,6 +54,10 @@ function AvaliadorInicio(props){
         setInstituicao(props.location.state.instituicao);
         setPodeAvaliar(props.location.state.pode_avaliar);
         textoAv(props.location.state.pode_avaliar);
+
+        api.post(`avaliacao/atualiza-qtd-projetos/${props.location.state.chave}`,{ //atualiza a quantidade de avaliações no banco
+            "qtd_avaliacoes":(props.location.state.projetos_avaliados)
+        })
     },[])
 
     return(
